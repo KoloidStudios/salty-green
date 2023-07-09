@@ -17,7 +17,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Global="*res://src/global/global.tscn"
+Config="*res://src/autoloader/config.gd"
 
 [dotnet]
 
