@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://byqu58sdee6bn"]
+
+[ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/object/boat.tscn" id="1_cak8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1is"]
+size = Vector2(1152, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_458ae"]
+size = Vector2(8, 648)
+
+[node name="test_boat" type="Node2D"]
+
+[node name="boat" parent="." instance=ExtResource("1_cak8y")]
+position = Vector2(324, 236)
+
+[node name="border" type="StaticBody2D" parent="."]
+
+[node name="collision_top" type="CollisionShape2D" parent="border"]
+position = Vector2(576, -5)
+shape = SubResource("RectangleShape2D_ol1is")
+
+[node name="collision_left" type="CollisionShape2D" parent="border"]
+position = Vector2(-4, 324)
+shape = SubResource("RectangleShape2D_458ae")
+
+[node name="collision_right" type="CollisionShape2D" parent="border"]
+position = Vector2(1157, 323)
+shape = SubResource("RectangleShape2D_458ae")
+
+[node name="collision_bottom" type="CollisionShape2D" parent="border"]
+position = Vector2(576, 653)
+shape = SubResource("RectangleShape2D_ol1is")
