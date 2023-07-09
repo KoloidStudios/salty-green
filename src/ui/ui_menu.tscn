@@ -1,0 +1,151 @@
+[gd_scene load_steps=5 format=3 uid="uid://uf3otym6vcdc"]
+
+[ext_resource type="Script" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
+
+[sub_resource type="Animation" id="Animation_0ivtk"]
+resource_name = "start"
+
+[sub_resource type="Animation" id="Animation_x5j14"]
+resource_name = "play_pressed"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kq0dt"]
+_data = {
+"play_pressed": SubResource("Animation_x5j14"),
+"start": SubResource("Animation_0ivtk")
+}
+
+[node name="ui_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dfvad")
+
+[node name="main" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -68.0
+offset_right = 53.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" type="Button" parent="main"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="options" type="Button" parent="main"]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="achievements" type="Button" parent="main"]
+layout_mode = 2
+text = "ACHIEVEMENTS"
+
+[node name="quit" type="Button" parent="main"]
+layout_mode = 2
+text = "QUIT
+"
+
+[node name="profile" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="profile"]
+layout_mode = 2
+text = "Select Profile"
+
+[node name="profile_1" type="Button" parent="profile"]
+layout_mode = 2
+text = "PROFILE 1"
+
+[node name="profile_2" type="Button" parent="profile"]
+layout_mode = 2
+text = "PROFILE 2"
+
+[node name="profile_3" type="Button" parent="profile"]
+layout_mode = 2
+text = "PROFILE 3"
+
+[node name="options" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="achievements" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="quit" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -29.0
+offset_right = 21.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="quit"]
+layout_mode = 2
+text = "Are you sure?"
+
+[node name="yes" type="Button" parent="quit"]
+layout_mode = 2
+text = "Yes"
+
+[node name="no" type="Button" parent="quit"]
+layout_mode = 2
+text = "No"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "start"
+libraries = {
+"": SubResource("AnimationLibrary_kq0dt")
+}
+
+[connection signal="pressed" from="main/play" to="." method="_on_play_pressed"]
