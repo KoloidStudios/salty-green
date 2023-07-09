@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
 
-[sub_resource type="Animation" id="Animation_0ivtk"]
-resource_name = "start"
+[sub_resource type="Animation" id="Animation_xls8m"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_x5j14"]
 resource_name = "play_pressed"
 
-[sub_resource type="Animation" id="Animation_xls8m"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_0ivtk"]
+resource_name = "start"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq0dt"]
 _data = {
@@ -46,7 +46,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="main" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,6 +77,7 @@ text = "QUIT
 "
 
 [node name="profile" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,10 +91,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="profile"]
+[node name="container" type="HBoxContainer" parent="profile"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="profile"]
+[node name="label" type="Label" parent="profile"]
 layout_mode = 2
 text = "Select Profile"
 
@@ -155,7 +155,7 @@ offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="quit"]
+[node name="label" type="Label" parent="quit"]
 layout_mode = 2
 text = "Are you sure?"
 

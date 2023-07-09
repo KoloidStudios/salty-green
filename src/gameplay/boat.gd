@@ -7,7 +7,7 @@ var rotation_direction = 0
 
 func get_input():
 	rotation_direction = Input.get_axis("left", "right")
-	velocity = transform.x * Input.get_axis("down", "up") * speed
+	velocity = transform.y * Input.get_axis("down", "up") * speed
 
 func _physics_process(delta):
 	get_input()
