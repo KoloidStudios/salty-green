@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7n22l"]
 
 [node name="boat" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_b3p04")
 
 [node name="sprite" type="Sprite2D" parent="."]
