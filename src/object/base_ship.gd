@@ -3,7 +3,7 @@ class_name Base_ship
 
 # let's use International standards
 # This is not based on real life examples.
-@export var ENGINE_POWER         : float = 500#kW
+@export var ENGINE_POWER         : float = 50#kW
 @export var LENGTH				 : float = 2#m
 @export var PROPELLER_DIAMETER	 : float = 0.4#m
 @export var ANGULAR_ACCELERATION : float = 0.01#m/s^2
@@ -86,7 +86,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if _is_accelerating:
 		normalized_vector = transform.y
-		speed = move_toward(speed, direction * MAX_SPEED, max(0, acceleration - eval_resistance()))
+		speed = move_toward(speed, direction * gear_multiplier(current_gear()) * MAX_SPEED, max(0, acceleration - eval_resistance()))
 	else:
 		speed = move_toward(speed, 0, eval_resistance())
 
