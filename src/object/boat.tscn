@@ -3,10 +3,16 @@
 [ext_resource type="Script" path="res://src/object/player_ship.gd" id="1_b3p04"]
 [ext_resource type="Texture2D" uid="uid://c7bvmlntponot" path="res://assets/icon.svg" id="2_8a5xn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7n22l"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 
-[node name="boat" type="CharacterBody2D"]
-motion_mode = 1
+[node name="boat" type="RigidBody2D"]
+position = Vector2(0, 16)
+collision_layer = 0
+inertia = 1.0
+physics_material_override = SubResource("PhysicsMaterial_757qy")
+continuous_cd = 1
+linear_damp = 1.0
+angular_damp = 1.0
 script = ExtResource("1_b3p04")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -14,5 +20,5 @@ position = Vector2(0, -0.5)
 scale = Vector2(0.140625, 0.242188)
 texture = ExtResource("2_8a5xn")
 
-[node name="collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7n22l")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -15, 9, -15, 9, 7, 0, 15, -9, 7)

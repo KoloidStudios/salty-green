@@ -1,13 +1,13 @@
-extends CharacterBody2D
+extends RigidBody2D
 class_name Base_ship
 
 # let's use International standards
 # This is not based on real life examples.
 @export var ENGINE_POWER         : float = 50#kW
 @export var LENGTH				 : float = 2#m
+@export var WIDTH				 : float = 0.5
 @export var PROPELLER_DIAMETER	 : float = 0.4#m
-@export var ANGULAR_ACCELERATION : float = 0.01#m/s^2
-@export var MAX_ANGULAR_SPEED    : float = 0.5#m/s
+@export var ANGULAR_ACCELERATION : float = 0.1#m/s^2
 @export var BASE_MASS            : float = 1000#kg
 
 @export var ENGINE_FORWARD_MULTIPLIER   : float = 1.0
@@ -16,8 +16,6 @@ class_name Base_ship
 @export var PHYSICAL_BACKWARD_MULTIPLIER: float = 0.3
 
 var THRUST: float = pow(PI * 0.5 * pow(PROPELLER_DIAMETER, 2) * 1000 * pow(ENGINE_POWER * 1000, 2), 0.3333334)
-
-var MAX_SPEED: float = ENGINE_POWER * 1000 / THRUST
 
 class Gear:
 	var forward_multiplier : float
@@ -37,7 +35,6 @@ var _fish_count 	 : int   = 0
 var _is_accelerating : bool  = false
 var _is_rotating	 : bool = false
 
-var total_mass		 : float = BASE_MASS
 # Speed is scalar, does not have any direction.
 var speed		     : float = 0.0
 # Ship only move forward and backward
@@ -45,7 +42,6 @@ var direction	     : int   = 0
 # Rotational speed
 var angular_speed    : float   = 0.0
 var angular_direction: int     = 0
-var acceleration     : float   = THRUST / total_mass
 var normalized_vector: Vector2 = transform.y
 var current_gear_type: GT      = GT.ENGINE
 
@@ -76,26 +72,21 @@ func gear_multiplier(gear: Gear) -> float:
 
 func eval_resistance() -> float:
 	# drag force
-	return 0.5 * 1000 * pow(abs(speed), 2) * 0.45 * 0.023 * LENGTH / total_mass
+	return 0.5 * 1000 * pow(abs(speed), 2) * 0.45 * 0.023 * LENGTH / mass
 
 func _ready() -> void:
-	print("a: ", acceleration)
-	print("vt: ", MAX_SPEED)
+	mass = BASE_MASS
+	# i don't care, use solid cylinder inertia.
+	inertia = 0.25 * mass * pow(WIDTH, 2) + 0.08334 * mass * pow(LENGTH, 2)
+	print("I: ", inertia)
+	print("m: ", mass)
 	print("T: ", THRUST)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta) -> void:
 	if _is_accelerating:
-		normalized_vector = transform.y
-		speed = move_toward(speed, direction * gear_multiplier(current_gear()) * MAX_SPEED, max(0, acceleration - eval_resistance()))
-	else:
-		speed = move_toward(speed, 0, eval_resistance())
+		apply_force(Config.meter_to_pixel_multiplier * direction * transform.y * THRUST * gear_multiplier(current_gear()))
+
+	apply_force(Config.meter_to_pixel_multiplier * -transform.y * eval_resistance())
 
 	if _is_rotating:
-		angular_speed = move_toward(angular_speed, angular_direction * MAX_ANGULAR_SPEED, ANGULAR_ACCELERATION)
-	else:
-		angular_speed = move_toward(angular_speed, 0, ANGULAR_ACCELERATION)
-
-	velocity = Config.meter_to_pixel_multiplier * normalized_vector * speed
-	rotation += Config.meter_to_pixel_multiplier * angular_speed * delta
-
-	move_and_slide()
+		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * LENGTH * ANGULAR_ACCELERATION * mass)
