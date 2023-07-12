@@ -628,7 +628,7 @@ anchor_bottom = 0.5
 offset_left = -31.0
 offset_top = -30.5
 offset_right = 203.0
-offset_bottom = 120.5
+offset_bottom = 155.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -674,6 +674,11 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.5
+
+[node name="confirm" type="Button" parent="options"]
+layout_mode = 2
+text = "Confirm
+"
 
 [node name="back" type="Button" parent="options"]
 layout_mode = 2
@@ -726,6 +731,7 @@ text = "No"
 [connection signal="pressed" from="profile/back" to="." method="_on_back_profile_pressed"]
 [connection signal="value_changed" from="options/audio/music/music_slider" to="options/audio" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="options/audio/sfx/sfx_slider" to="options/audio" method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="options/confirm" to="options/audio" method="_on_confirm_pressed"]
 [connection signal="pressed" from="options/back" to="." method="_on_back_option_pressed"]
 [connection signal="pressed" from="quit/yes" to="." method="_on_quit_yes_pressed"]
 [connection signal="pressed" from="quit/no" to="." method="_on_quit_no_pressed"]

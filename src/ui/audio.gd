@@ -25,12 +25,8 @@ func _on_music_slider_value_changed(value: float) -> void:
 			linear_to_db(value)
 	)
 
-func _on_done_pressed() -> void:
+
+func _on_confirm_pressed() -> void:
 	Settings.file.set_value("audio", "sound_volume", sound_volume_slider.value)
 	Settings.file.set_value("audio", "music_volume", music_volume_slider.value)
 	Settings.save()
-
-
-func _on_confirm_mouse_entered():
-	$confirm.grab_focus()
-
