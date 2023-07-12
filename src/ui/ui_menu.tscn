@@ -188,7 +188,7 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id="Animation_x5j14"]
 resource_name = "play_pressed"
-length = 1.2
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -196,7 +196,7 @@ tracks/0/path = NodePath("main:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(512, 256), Vector2(512, 166)]
@@ -208,7 +208,7 @@ tracks/1/path = NodePath("main:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
@@ -220,7 +220,7 @@ tracks/2/path = NodePath("label:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 1),
+"times": PackedFloat32Array(0.1, 0.7),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(382.5, 98), Vector2(382.5, 8)]
@@ -232,7 +232,7 @@ tracks/3/path = NodePath("label:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
@@ -244,7 +244,7 @@ tracks/4/path = NodePath("main:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -256,7 +256,7 @@ tracks/5/path = NodePath("main:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -268,7 +268,7 @@ tracks/6/path = NodePath("profile:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 1,
 "values": [false, true]
@@ -280,7 +280,7 @@ tracks/7/path = NodePath("profile:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.8, 1.2),
+"times": PackedFloat32Array(0.3, 0.7),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -292,7 +292,7 @@ tracks/8/path = NodePath("profile:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.6, 1.2),
+"times": PackedFloat32Array(0.1, 0.7),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(502, 371), Vector2(502, 241)]
@@ -304,10 +304,10 @@ tracks/9/path = NodePath("profile:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.6, 0.6001, 1.2),
-"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [0.0, 0.0, 0.0]
+"values": [0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_0ivtk"]
@@ -538,7 +538,7 @@ anchor_bottom = 0.5
 offset_left = -64.0
 offset_top = -68.0
 offset_right = 64.0002
-offset_bottom = 68.0
+offset_bottom = 68.0003
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 70)
@@ -571,7 +571,7 @@ anchor_bottom = 0.5
 offset_left = -74.0
 offset_top = -83.0
 offset_right = 74.0
-offset_bottom = 83.0007
+offset_bottom = 83.0008
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(74, 26)
