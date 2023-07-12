@@ -83,10 +83,16 @@ func _ready() -> void:
 	print("T: ", THRUST)
 
 func _physics_process(_delta) -> void:
-	if _is_accelerating:
-		apply_force(Config.meter_to_pixel_multiplier * direction * transform.y * THRUST * gear_multiplier(current_gear()))
+	var total_force := Vector2.ZERO
 
-	apply_force(Config.meter_to_pixel_multiplier * -transform.y * eval_resistance())
+	speed = linear_velocity.length()
+
+	if _is_accelerating:
+		total_force +=  direction * transform.y * THRUST * gear_multiplier(current_gear())
+
+	total_force -= Config.meter_to_pixel_multiplier * -transform.y * eval_resistance()
 
 	if _is_rotating:
 		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * LENGTH * ANGULAR_ACCELERATION * mass)
+
+	apply_central_force(Config.meter_to_pixel_multiplier * total_force)
