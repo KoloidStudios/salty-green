@@ -70,7 +70,7 @@ func gear_multiplier(gear: Gear) -> float:
 		_:
 			return 0.0
 
-func eval_resistance() -> float:
+func drag_force() -> float:
 	# drag force
 	return 0.5 * 1000 * pow(abs(speed), 2) * 0.45 * 0.023 * LENGTH / mass
 
@@ -90,7 +90,7 @@ func _physics_process(_delta) -> void:
 	if _is_accelerating:
 		total_force +=  direction * transform.y * THRUST * gear_multiplier(current_gear())
 
-	total_force -= Config.meter_to_pixel_multiplier * -transform.y * eval_resistance()
+	total_force += -transform.y * drag_force()
 
 	if _is_rotating:
 		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * LENGTH * ANGULAR_ACCELERATION * mass)

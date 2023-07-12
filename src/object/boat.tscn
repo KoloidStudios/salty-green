@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7bvmlntponot" path="res://assets/icon.svg" id="2_8a5xn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
+absorbent = true
 
 [node name="boat" type="RigidBody2D"]
 position = Vector2(0, 16)
@@ -21,4 +22,4 @@ scale = Vector2(0.140625, 0.242188)
 texture = ExtResource("2_8a5xn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-9, -15, 9, -15, 9, 7, 0, 15, -9, 7)
+polygon = PackedVector2Array(-9, -10, -7, -15, 7, -15, 9, -10, 9, 7, 4, 15, -4, 15, -9, 7)
