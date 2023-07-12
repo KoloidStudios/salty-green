@@ -6,23 +6,24 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 absorbent = true
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swa80"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sokdn"]
 radius = 8.0
 
 [node name="boat" type="RigidBody2D"]
-position = Vector2(0, 16)
 collision_layer = 0
 inertia = 1.0
 physics_material_override = SubResource("PhysicsMaterial_757qy")
 continuous_cd = 1
+max_contacts_reported = 3
+contact_monitor = true
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_b3p04")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -0.5)
-scale = Vector2(0.140625, 0.242188)
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.140625, 0.234375)
 texture = ExtResource("2_8a5xn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_swa80")
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sokdn")
