@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvlskwkm5e64q"]
+
+[ext_resource type="Script" path="res://src/world/test/test_world.gd" id="1_8tiwp"]
+[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_a1coy"]
+
+[node name="test_world" type="Node2D"]
+script = ExtResource("1_8tiwp")
+test_scene = ExtResource("1_a1coy")
+
+[node name="subviewport_container" type="SubViewportContainer" parent="."]
+clip_contents = true
+layout_direction = 1
+offset_right = 1153.0
+offset_bottom = 647.0
+stretch = true
+
+[node name="subviewport" type="SubViewport" parent="subviewport_container"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1153, 647)
+render_target_update_mode = 4
+
+[node name="debug_ui" type="Control" parent="."]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="label" type="Label" parent="debug_ui"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 924.0
+offset_bottom = 79.0
+text = "test"
