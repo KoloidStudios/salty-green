@@ -37,7 +37,4 @@ position = Vector2(576, 653)
 shape = SubResource("RectangleShape2D_ol1is")
 
 [node name="boat" parent="." instance=ExtResource("1_cak8y")]
-position = Vector2(490, 240)
-max_contacts_reported = 1
-linear_damp = 0.0
-angular_damp = 0.0
+position = Vector2(496, 270)
