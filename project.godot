@@ -18,6 +18,11 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Config="*res://src/autoloader/config.gd"
+Settings="*res://src/autoloader/settings.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [dotnet]
 
