@@ -7,15 +7,24 @@ func _ready():
 	$achievements.visible = false
 	$quit.visible = false
 
+#Play___________________________
 func _on_play_pressed():
 	$anim.play("play_pressed")
+func _on_back_profile_pressed():
+	$anim.play_backwards("play_pressed")
+
+#Options________________________
+func _on_options_pressed():
+	$anim.play("options_pressed")
+func _on_back_option_pressed():
+	$anim.play_backwards("options_pressed")
+
 
 #QUIT PANEL
 func _on_quit_yes_pressed():
 	get_tree().quit()
-
 func _on_quit_no_pressed():
 	pass # Replace with function body.
 
-func _on_back_pressed():
-	$anim.play_backwards("play_pressed")
+
+
