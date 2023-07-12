@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://byqu58sdee6bn"]
+[gd_scene load_steps=6 format=3 uid="uid://byqu58sdee6bn"]
 
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/object/boat.tscn" id="1_cak8y"]
 [ext_resource type="Script" path="res://src/world/test/test_boat.gd" id="1_icc5k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4txq"]
+friction = 0.2
+bounce = 0.09
+absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1is"]
 size = Vector2(1152, 10)
@@ -14,6 +19,7 @@ script = ExtResource("1_icc5k")
 
 [node name="border" type="StaticBody2D" parent="."]
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_j4txq")
 
 [node name="collision_top" type="CollisionShape2D" parent="border"]
 position = Vector2(576, -5)
@@ -32,7 +38,7 @@ position = Vector2(576, 653)
 shape = SubResource("RectangleShape2D_ol1is")
 
 [node name="boat" parent="." instance=ExtResource("1_cak8y")]
-position = Vector2(572, 322)
+position = Vector2(74, 28)
 
 [node name="property_debug_label" type="Label" parent="."]
 offset_left = 7.0
