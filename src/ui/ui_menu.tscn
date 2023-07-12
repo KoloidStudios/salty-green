@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://uf3otym6vcdc"]
+[gd_scene load_steps=8 format=3 uid="uid://uf3otym6vcdc"]
 
 [ext_resource type="Script" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
+[ext_resource type="Script" path="res://src/ui/audio.gd" id="2_wd0oq"]
 
 [sub_resource type="Animation" id="Animation_xls8m"]
 length = 0.001
@@ -219,7 +220,7 @@ tracks/2/path = NodePath("label:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.9),
+"times": PackedFloat32Array(0.1, 1),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(382.5, 98), Vector2(382.5, 8)]
@@ -255,7 +256,7 @@ tracks/5/path = NodePath("main:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -363,7 +364,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_q5drn"]
 resource_name = "options_pressed"
-length = 1.2
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -371,7 +372,7 @@ tracks/0/path = NodePath("main:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(512, 256), Vector2(296, 256)]
@@ -383,7 +384,7 @@ tracks/1/path = NodePath("main:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
@@ -395,7 +396,7 @@ tracks/2/path = NodePath("label:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(382.5, 98), Vector2(52, 98)]
@@ -407,7 +408,7 @@ tracks/3/path = NodePath("label:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
@@ -419,7 +420,7 @@ tracks/4/path = NodePath("main:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -431,7 +432,7 @@ tracks/5/path = NodePath("main:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -443,10 +444,10 @@ tracks/6/path = NodePath("options:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.6, 1.2),
+"times": PackedFloat32Array(0.2, 0.6),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(761, 293.5), Vector2(545, 293.5)]
+"values": [Vector2(207, 263.5), Vector2(132, 263.5)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -455,7 +456,7 @@ tracks/7/path = NodePath("options:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.6, 1.2),
+"times": PackedFloat32Array(0.2, 0.6),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
@@ -467,7 +468,7 @@ tracks/8/path = NodePath("options:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.8, 1.2),
+"times": PackedFloat32Array(0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -479,7 +480,7 @@ tracks/9/path = NodePath("options:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -515,10 +516,10 @@ anchor_left = 0.5
 anchor_top = 0.218
 anchor_right = 0.5
 anchor_bottom = 0.218
-offset_left = 382.5
-offset_top = 98.0
-offset_right = 769.5
-offset_bottom = 184.0
+offset_left = -193.5
+offset_top = -43.264
+offset_right = 193.5
+offset_bottom = 42.7361
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(193.5, 43)
@@ -534,10 +535,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 512.0
-offset_top = 256.0
-offset_right = 640.0
-offset_bottom = 392.0
+offset_left = -64.0
+offset_top = -68.0
+offset_right = 64.0002
+offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 70)
@@ -567,10 +568,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 502.0
-offset_top = 241.0
-offset_right = 650.0
-offset_bottom = 407.001
+offset_left = -74.0
+offset_top = -83.0
+offset_right = 74.0
+offset_bottom = 83.0007
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(74, 26)
@@ -624,17 +625,55 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 545.0
-offset_top = 293.5
-offset_right = 607.0
-offset_bottom = 354.5
+offset_left = -31.0
+offset_top = -30.5
+offset_right = 203.0
+offset_bottom = 120.5
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="options"]
 layout_mode = 2
 text = "Options"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="options"]
+layout_mode = 2
+text = "Audio"
+
+[node name="audio" type="VBoxContainer" parent="options"]
+layout_mode = 2
+script = ExtResource("2_wd0oq")
+
+[node name="music" type="HBoxContainer" parent="options/audio"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="options/audio/music"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+text = "Music:"
+
+[node name="music_slider" type="HSlider" parent="options/audio/music"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="sfx" type="HBoxContainer" parent="options/audio"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="options/audio/sfx"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+text = "sfx:"
+
+[node name="sfx_slider" type="HSlider" parent="options/audio/sfx"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
 
 [node name="back" type="Button" parent="options"]
 layout_mode = 2
@@ -685,6 +724,8 @@ text = "No"
 [connection signal="pressed" from="main/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="profile/back" to="." method="_on_back_profile_pressed"]
+[connection signal="value_changed" from="options/audio/music/music_slider" to="options/audio" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="options/audio/sfx/sfx_slider" to="options/audio" method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="options/back" to="." method="_on_back_option_pressed"]
 [connection signal="pressed" from="quit/yes" to="." method="_on_quit_yes_pressed"]
 [connection signal="pressed" from="quit/no" to="." method="_on_quit_no_pressed"]
