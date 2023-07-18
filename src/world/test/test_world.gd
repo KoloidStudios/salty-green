@@ -7,6 +7,7 @@ extends Node2D
 @onready var sub_viewport_container: SubViewportContainer = $subviewport_container
 @onready var debug_label : Label       = $debug_ui/label
 
+# TODO: Viewport based on window/screen size.
 func _set_svc_size() -> void:
 	#sub_viewport_container.scale = get_viewport_rect().size
 	pass
