@@ -3,7 +3,7 @@ class_name Base_ship
 
 # let's use International standards
 # This is not based on real life examples.
-@export var ENGINE_POWER         : float = 25#kW
+@export var ENGINE_POWER         : float = 50#kW
 @export var LENGTH				 : float = 2#m
 @export var WIDTH				 : float = 0.5
 @export var PROPELLER_DIAMETER	 : float = 0.4#m
@@ -37,6 +37,7 @@ var _is_rotating	 : bool  = false
 var _inverse_mass    : float = 0.0
 
 var thrust_force: Vector2 = Vector2.ZERO
+var terminal_velocity: float = 0.0
 # Speed is scalar, does not have any direction.
 var speed		     : float = 0.0
 # Ship only move forward and backward
@@ -50,6 +51,7 @@ var current_gear_type: GT      = GT.ENGINE
 func _set_mass(m: float) -> void:
 	mass = m
 	_inverse_mass = 1/m
+	linear_damp = THRUST * _inverse_mass / terminal_velocity
 
 func fish_count() -> int:
 	return _fish_count
@@ -81,14 +83,16 @@ func get_drag_force() -> float:
 	return 0.5 * 1000 * pow(abs(speed), 2) * 0.7 * WIDTH * LENGTH
 
 func _ready() -> void:
+	inertia = 0.25 * mass * pow(WIDTH, 2) + 0.08334 * mass * pow(LENGTH, 2)
+	terminal_velocity = sqrt(2 * THRUST / (1000 * 0.7 * WIDTH * LENGTH))
 	_set_mass(BASE_MASS)
 	# i don't care, use solid cylinder inertia.
-	inertia = 0.25 * mass * pow(WIDTH, 2) + 0.08334 * mass * pow(LENGTH, 2)
 	print("I: ", inertia)
 	print("m: ", mass)
 	print("T: ", THRUST)
 	print("a: ", THRUST * _inverse_mass)
-	print("terminal_v: ", sqrt(2 * THRUST / (1000 * 0.7 * WIDTH * LENGTH)))
+	print("terminal_v: ", terminal_velocity)
+	print("damp: ", linear_damp)
 
 func _physics_process(_delta) -> void:
 	thrust_force = Vector2.ZERO
@@ -96,8 +100,6 @@ func _physics_process(_delta) -> void:
 
 	if _is_accelerating:
 		thrust_force = direction * transform.y * THRUST * gear_multiplier(current_gear())
-
-	linear_damp = get_drag_force() * _inverse_mass
 
 	if _is_rotating:
 		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * inertia * ANGULAR_ACCELERATION)

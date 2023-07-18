@@ -18,9 +18,6 @@ position = Vector2(0, 18)
 collision_layer = 0
 inertia = 1.0
 physics_material_override = SubResource("PhysicsMaterial_757qy")
-linear_damp_mode = 1
-linear_damp = 1.0
-angular_damp = 1.0
 script = ExtResource("1_b3p04")
 
 [node name="sprite" type="Sprite2D" parent="."]
