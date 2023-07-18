@@ -3,12 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/object/boat.tscn" id="1_cak8y"]
 [ext_resource type="Script" path="res://src/world/test/test_boat.gd" id="1_eaedm"]
 [ext_resource type="PackedScene" uid="uid://ck0gif3y7yhm" path="res://src/world/camera.tscn" id="3_jvcmf"]
-[ext_resource type="Texture2D" uid="uid://deaffax0f2dp6" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
+[ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4txq"]
-friction = 0.2
-bounce = 0.1
-absorbent = true
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5h8xk"]
+friction = 0.4
+rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol1is"]
 size = Vector2(1152, 10)
@@ -21,7 +20,8 @@ script = ExtResource("1_eaedm")
 
 [node name="border" type="StaticBody2D" parent="."]
 collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_j4txq")
+collision_priority = 50.0
+physics_material_override = SubResource("PhysicsMaterial_5h8xk")
 
 [node name="collision_top" type="CollisionShape2D" parent="border"]
 position = Vector2(576, -5)
@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_ol1is")
 one_way_collision_margin = 128.0
 
 [node name="boat" parent="." instance=ExtResource("1_cak8y")]
-position = Vector2(74, 28)
+position = Vector2(118, 106)
 
 [node name="camera" parent="boat" instance=ExtResource("3_jvcmf")]
 
