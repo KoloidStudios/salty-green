@@ -22,13 +22,20 @@ Settings="*res://src/autoloader/settings.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="salty-green"
+
+[gui]
+
+common/snap_controls_to_pixels=false
 
 [input]
 
@@ -56,6 +63,8 @@ right={
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
+2d/default_linear_damp=1.0
+2d/solver/solver_iterations=64
 
 [rendering]
 
