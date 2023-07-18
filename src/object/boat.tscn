@@ -1,29 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://buk7uchvp6xab"]
+[gd_scene load_steps=7 format=3 uid="uid://buk7uchvp6xab"]
 
 [ext_resource type="Script" path="res://src/object/player_ship.gd" id="1_b3p04"]
-[ext_resource type="Texture2D" uid="uid://c7bvmlntponot" path="res://assets/icon.svg" id="2_8a5xn"]
+[ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_du38l"]
+[ext_resource type="Shader" path="res://src/shader/pixelate.gdshader" id="2_xye4e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
-absorbent = true
+friction = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vi7l1"]
+shader = ExtResource("2_xye4e")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sokdn"]
 radius = 8.0
 
 [node name="boat" type="RigidBody2D"]
+position = Vector2(0, 18)
 collision_layer = 0
 inertia = 1.0
 physics_material_override = SubResource("PhysicsMaterial_757qy")
-continuous_cd = 1
-max_contacts_reported = 3
-contact_monitor = true
+linear_damp_mode = 1
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_b3p04")
 
 [node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vi7l1")
 position = Vector2(0, -2.38419e-07)
-scale = Vector2(0.140625, 0.234375)
-texture = ExtResource("2_8a5xn")
+texture = ExtResource("2_du38l")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sokdn")
