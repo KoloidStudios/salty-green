@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ck0gif3y7yhm"]
+[gd_scene load_steps=2 format=3 uid="uid://ck0gif3y7yhm"]
+
+[ext_resource type="Script" path="res://src/world/camera.gd" id="1_mordq"]
 
 [node name="camera" type="Camera2D"]
-zoom = Vector2(2, 2)
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("1_mordq")
