@@ -63,7 +63,6 @@ right={
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
-2d/default_linear_damp=1.0
 2d/solver/solver_iterations=64
 
 [rendering]
