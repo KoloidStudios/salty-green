@@ -1,0 +1,227 @@
+[gd_scene load_steps=29 format=3 uid="uid://dpiuw5el7xxku"]
+
+[ext_resource type="Texture2D" uid="uid://dx6wtcp1bx72v" path="res://assets/Koloid-logo-Sheet.png" id="1_mhgee"]
+[ext_resource type="FontFile" uid="uid://3i6iiy6dffk1" path="res://assets/fonts/alagard.ttf" id="2_i5jsp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mxxa"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(0, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdmo0"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(73, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxpxk"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(146, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i35ts"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(219, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvkaj"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(292, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7y7o"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(365, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esqn8"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(438, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clv4y"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(511, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfe1"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(584, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im2rq"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(657, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r642t"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(730, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra0ed"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(803, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_214jv"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(876, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hmk6"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(949, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0yti"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1022, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt3qg"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1095, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjixf"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1168, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pd8r"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1241, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyko"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1314, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i1w7"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1387, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkwu0"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1460, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g75p"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1533, 73, 73, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80ty"]
+atlas = ExtResource("1_mhgee")
+region = Rect2(1606, 73, 73, 73)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rtav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mxxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdmo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxpxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i35ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvkaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7y7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esqn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clv4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im2rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra0ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_214jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hmk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0yti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt3qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjixf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pd8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i1w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkwu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g75p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s80ty")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_l3tmv"]
+resource_name = "intro"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxan8"]
+_data = {
+"intro": SubResource("Animation_l3tmv")
+}
+
+[node name="intro" type="Node"]
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.484375
+anchor_top = 0.472222
+anchor_right = 0.515625
+anchor_bottom = 0.527778
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="logo" type="AnimatedSprite2D" parent="control"]
+position = Vector2(42, 21)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_7rtav")
+autoplay = "default"
+frame = 22
+frame_progress = 1.0
+
+[node name="label" type="Label" parent="control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 268.0
+offset_right = 52.0
+offset_bottom = 291.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.40709, 5.40709)
+pivot_offset = Vector2(51.9688, 11.5589)
+theme_override_fonts/font = ExtResource("2_i5jsp")
+text = "Koloid Studios
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cxan8")
+}

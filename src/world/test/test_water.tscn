@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ri41yqk1nki6"]
+
+[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_f4d27"]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_4fti8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2fu4"]
+shader = ExtResource("2_4fti8")
+shader_parameter/WATER_COL = Color(0.705882, 0.741176, 0.796078, 1)
+shader_parameter/WATER2_COL = Color(0.219608, 0.419608, 0.403922, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/wave_speed = 1.5
+
+[node name="test_water" instance=ExtResource("1_f4d27")]
+
+[node name="background" type="Node2D" parent="." index="0"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="background" index="0"]
+follow_viewport_scale = 0.1
+scroll_offset = Vector2(20, 20)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/ParallaxBackground" index="0"]
+motion_mirroring = Vector2(100, 100)
+
+[node name="ColorRect" type="ColorRect" parent="background/ParallaxBackground/ParallaxLayer" index="0"]
+material = SubResource("ShaderMaterial_b2fu4")
+offset_right = 100.0
+offset_bottom = 100.0
