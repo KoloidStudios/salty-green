@@ -83,7 +83,7 @@ func get_drag_force() -> float:
 	return 0.5 * 1000 * pow(abs(speed), 2) * 0.7 * WIDTH * LENGTH
 
 func _ready() -> void:
-	inertia = 0.25 * mass * pow(WIDTH, 2) + 0.08334 * mass * pow(LENGTH, 2)
+	inertia = 0.25 * mass * pow(WIDTH, 2) + 0.08334 * mass * pow(LENGTH, 2) * Config.meter_to_pixel_multiplier * 1000
 	terminal_velocity = sqrt(2 * THRUST / (1000 * 0.7 * WIDTH * LENGTH))
 	_set_mass(BASE_MASS)
 	# i don't care, use solid cylinder inertia.
@@ -104,4 +104,4 @@ func _physics_process(_delta) -> void:
 	if _is_rotating:
 		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * inertia * ANGULAR_ACCELERATION)
 
-	apply_force(Config.meter_to_pixel_multiplier * thrust_force)
+	apply_central_force(Config.meter_to_pixel_multiplier * thrust_force)
