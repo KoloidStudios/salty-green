@@ -113,9 +113,8 @@ func _physics_process(_delta) -> void:
 
 	if _is_accelerating:
 		app_force = _direction * transform.y * _thrust_force
-		linear_damp = _thrust_force * _inverse_mass / _terminal_velocity
-	else:
-		linear_damp = get_drag_force_per_speed() * _inverse_mass
+
+	linear_damp = max(get_drag_force_per_speed() * _inverse_mass, 1)
 
 	if _is_rotating:
 		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * inertia * ANGULAR_ACCELERATION)
