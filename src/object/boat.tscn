@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://buk7uchvp6xab"]
+[gd_scene load_steps=5 format=3 uid="uid://buk7uchvp6xab"]
 
 [ext_resource type="Script" path="res://src/object/player_ship.gd" id="1_b3p04"]
 [ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_du38l"]
-[ext_resource type="Shader" path="res://src/shader/pixelate.gdshader" id="2_xye4e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 friction = 0.35
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vi7l1"]
-shader = ExtResource("2_xye4e")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sokdn"]
 radius = 8.0
@@ -33,7 +29,6 @@ PHYSICAL_FORWARD_MULTIPLIER = null
 PHYSICAL_BACKWARD_MULTIPLIER = null
 
 [node name="sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_vi7l1")
 position = Vector2(0, -2.38419e-07)
 texture = ExtResource("2_du38l")
 
