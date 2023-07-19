@@ -6,7 +6,8 @@ func _physics_process(_delta):
 	var horz_axis: float = Input.get_axis("left", "right")
 	# Input Up and Down for velocity
 	if (vert_axis):
-		direction = int(vert_axis)
+		if get_direction() != int(vert_axis):
+			set_direction(int(vert_axis))
 
 	_is_accelerating = bool(vert_axis)
 
