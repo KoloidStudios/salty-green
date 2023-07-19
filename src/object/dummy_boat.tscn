@@ -14,12 +14,11 @@ shader = ExtResource("2_v6l0v")
 radius = 8.0
 
 [node name="dummy_boat" type="RigidBody2D"]
-collision_layer = 2
 inertia = 1.0
 physics_material_override = SubResource("PhysicsMaterial_757qy")
-continuous_cd = 2
 max_contacts_reported = 3
 contact_monitor = true
+can_sleep = false
 script = ExtResource("1_mos30")
 
 [node name="sprite" type="Sprite2D" parent="."]

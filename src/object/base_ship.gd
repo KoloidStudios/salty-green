@@ -4,6 +4,8 @@ class_name Base_ship
 # let's use International standards
 # This is not based on real life examples.
 @export var ENGINE_POWER         : float = 50#kW
+@export var ENGINE_POSITION		 : Vector2 = Vector2.ZERO
+@export var ENGINE_TOTAL_SUM	 : int   = 1
 @export var LENGTH				 : float = 2#m
 @export var WIDTH				 : float = 0.5
 @export var PROPELLER_DIAMETER	 : float = 0.4#m
@@ -15,7 +17,7 @@ class_name Base_ship
 @export var PHYSICAL_FORWARD_MULTIPLIER : float = 0.3
 @export var PHYSICAL_BACKWARD_MULTIPLIER: float = 0.3
 
-var THRUST: float = pow(PI * 0.5 * pow(PROPELLER_DIAMETER, 2) * 1000 * pow(ENGINE_POWER * 1000, 2), 0.3333334)
+var THRUST: float = pow(PI * 0.5 * pow(PROPELLER_DIAMETER, 2) * 1000 * pow(ENGINE_POWER * 1000, 2), 0.3333334) * ENGINE_TOTAL_SUM
 
 class Gear:
 	var forward_multiplier : float
@@ -52,7 +54,7 @@ func _set_mass(m: float) -> void:
 	mass = m
 	_inverse_mass = 1/m
 	# i don't care, use solid cylinder inertia.
-	inertia = (0.25 * mass * pow(WIDTH, 2) + 0.08334 * mass * pow(LENGTH, 2)) * pow(Config.meter_to_pixel_multiplier, 2) * 80
+	inertia = (0.25 * pow(WIDTH, 2) + 0.08334 * pow(LENGTH, 2)) * mass * pow(Config.meter_to_pixel_multiplier, 2)
 
 func fish_count() -> int:
 	return _fish_count
@@ -89,10 +91,12 @@ func get_direction() -> int:
 
 func get_drag_force() -> float:
 	# drag force (fake)
-	return 0.5 * 1000 * pow(abs(_speed), 2) * 0.7 * WIDTH * LENGTH
+	return 0.5 * 1000 * pow(_speed, 2) * 0.7 * WIDTH * LENGTH
+
+func get_drag_force_per_speed() -> float:
+	return 0.5 * 1000 * _speed * 0.7 * WIDTH * LENGTH
 
 func _ready() -> void:
-	_terminal_velocity = sqrt(2 * _thrust_force / (1000 * 0.7 * WIDTH * LENGTH))
 	_set_mass(BASE_MASS)
 
 	print("Initial values")
@@ -111,12 +115,9 @@ func _physics_process(_delta) -> void:
 		app_force = _direction * transform.y * _thrust_force
 		linear_damp = _thrust_force * _inverse_mass / _terminal_velocity
 	else:
-		if (linear_damp <= 1):
-			linear_damp = 1
-		else:
-			linear_damp = get_drag_force() * _inverse_mass / _speed
+		linear_damp = get_drag_force_per_speed() * _inverse_mass
 
 	if _is_rotating:
 		apply_torque(Config.meter_to_pixel_multiplier * angular_direction * inertia * ANGULAR_ACCELERATION)
 
-	apply_central_force(Config.meter_to_pixel_multiplier * app_force)
+	apply_force(Config.meter_to_pixel_multiplier * app_force)
