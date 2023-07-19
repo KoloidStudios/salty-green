@@ -21,3 +21,11 @@ func _ready() -> void:
 
 func _on_debug_string(text: String) -> void:
 	debug_label.text = text
+
+func _input(event) -> void:
+	if (event.is_action_pressed("Test_zoom_out")):
+		sub_viewport_container.size *= 2
+		sub_viewport_container.scale = get_viewport_rect().size / sub_viewport_container.size
+	if (event.is_action_pressed("Test_zoom_in")):
+		sub_viewport_container.size /= 2
+		sub_viewport_container.scale = get_viewport_rect().size / sub_viewport_container.size
