@@ -15,11 +15,23 @@ radius = 8.0
 
 [node name="boat" type="RigidBody2D"]
 collision_layer = 0
+collision_mask = 3
 inertia = 1.0
 physics_material_override = SubResource("PhysicsMaterial_757qy")
 continuous_cd = 2
-max_contacts_reported = 1
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_b3p04")
+ENGINE_POWER = null
+LENGTH = null
+WIDTH = null
+PROPELLER_DIAMETER = null
+ANGULAR_ACCELERATION = null
+BASE_MASS = null
+ENGINE_FORWARD_MULTIPLIER = null
+ENGINE_BACKWARD_MULTIPLIER = null
+PHYSICAL_FORWARD_MULTIPLIER = null
+PHYSICAL_BACKWARD_MULTIPLIER = null
 
 [node name="sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vi7l1")
