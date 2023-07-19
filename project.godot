@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="salty-green"
+config/description="Game about boat fishing and small tropical island"
 run/main_scene="res://src/intro.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
-boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/bg_color=Color(0.129412, 0.129412, 0.129412, 1)
 config/icon="res://assets/icon.svg"
 
 [autoload]
@@ -93,5 +94,6 @@ right={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.129412, 0.129412, 0.129412, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

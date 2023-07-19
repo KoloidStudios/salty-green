@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c10q3h4l64mgn"]
+
+[ext_resource type="FontFile" uid="uid://ti0jjd16ilad" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="1_6tkkx"]
+
+[resource]
+default_font = ExtResource("1_6tkkx")
+default_font_size = 22

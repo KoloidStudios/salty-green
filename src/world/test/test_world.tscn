@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvlskwkm5e64q"]
 
 [ext_resource type="Script" path="res://src/world/test/test_world.gd" id="1_8tiwp"]
-[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_a1coy"]
+[ext_resource type="PackedScene" uid="uid://ri41yqk1nki6" path="res://src/world/test/test_water.tscn" id="2_8xilq"]
 
 [node name="test_world" type="Node2D"]
 position = Vector2(0, -1)
 script = ExtResource("1_8tiwp")
-test_scene = ExtResource("1_a1coy")
+test_scene = ExtResource("2_8xilq")
 
 [node name="subviewport_container" type="SubViewportContainer" parent="."]
 texture_filter = 1

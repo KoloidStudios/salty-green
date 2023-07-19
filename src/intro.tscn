@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dpiuw5el7xxku"]
+[gd_scene load_steps=29 format=3 uid="uid://dpiuw5el7xxku"]
 
 [ext_resource type="Texture2D" uid="uid://dx6wtcp1bx72v" path="res://assets/Koloid-logo-Sheet.png" id="1_mhgee"]
+[ext_resource type="FontFile" uid="uid://3i6iiy6dffk1" path="res://assets/fonts/alagard.ttf" id="2_i5jsp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mxxa"]
 atlas = ExtResource("1_mhgee")
@@ -166,30 +167,61 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s80ty")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 20.0
+"speed": 8.0
 }]
+
+[sub_resource type="Animation" id="Animation_l3tmv"]
+resource_name = "intro"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxan8"]
+_data = {
+"intro": SubResource("Animation_l3tmv")
+}
 
 [node name="intro" type="Node"]
 
 [node name="control" type="Control" parent="."]
 layout_mode = 3
+anchor_left = 0.484375
+anchor_top = 0.472222
+anchor_right = 0.515625
+anchor_bottom = 0.527778
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="logo" type="AnimatedSprite2D" parent="control"]
+position = Vector2(42, 21)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_7rtav")
+autoplay = "default"
+frame = 22
+frame_progress = 1.0
+
+[node name="label" type="Label" parent="control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -52.0
+offset_top = 268.0
+offset_right = 52.0
+offset_bottom = 291.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="logo" type="AnimatedSprite2D" parent="control"]
-sprite_frames = SubResource("SpriteFrames_7rtav")
-autoplay = "default"
-frame_progress = 0.92915
+scale = Vector2(5.40709, 5.40709)
+pivot_offset = Vector2(51.9688, 11.5589)
+theme_override_fonts/font = ExtResource("2_i5jsp")
+text = "Koloid Studios
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cxan8")
+}
