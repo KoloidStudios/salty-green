@@ -1,7 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvlskwkm5e64q"]
 
 [ext_resource type="Script" path="res://src/world/test/test_world.gd" id="1_8tiwp"]
-
 [ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_a1coy"]
 [ext_resource type="Shader" path="res://src/shader/pixelate.gdshader" id="3_mpmhj"]
 
@@ -11,7 +10,7 @@ shader = ExtResource("3_mpmhj")
 [node name="test_world" type="Node2D"]
 position = Vector2(0, -1)
 script = ExtResource("1_8tiwp")
-test_scene = ExtResource("2_8xilq")
+test_scene = ExtResource("1_a1coy")
 
 [node name="subviewport_container" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_sbicq")
