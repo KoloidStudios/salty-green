@@ -69,16 +69,6 @@ one_way_collision_margin = 16.0
 
 [node name="boat" parent="." instance=ExtResource("1_cak8y")]
 position = Vector2(118, 106)
-ENGINE_POWER = null
-LENGTH = null
-WIDTH = null
-PROPELLER_DIAMETER = null
-ANGULAR_ACCELERATION = null
-BASE_MASS = null
-ENGINE_FORWARD_MULTIPLIER = null
-ENGINE_BACKWARD_MULTIPLIER = null
-PHYSICAL_FORWARD_MULTIPLIER = null
-PHYSICAL_BACKWARD_MULTIPLIER = null
 
 [node name="camera" parent="boat" instance=ExtResource("3_jvcmf")]
 
