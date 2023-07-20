@@ -16,7 +16,6 @@ continuous_cd = 2
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_lmcfp")
-ENGINE_POSITION = Vector2(0, -18)
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)
