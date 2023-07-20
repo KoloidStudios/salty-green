@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://buk7uchvp6xab"]
 
-[ext_resource type="Script" path="res://src/object/player_ship.gd" id="1_b3p04"]
+[ext_resource type="Script" path="res://src/object/player.gd" id="1_lmcfp"]
 [ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_du38l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
@@ -15,18 +15,8 @@ physics_material_override = SubResource("PhysicsMaterial_757qy")
 continuous_cd = 2
 max_contacts_reported = 3
 contact_monitor = true
-script = ExtResource("1_b3p04")
-ENGINE_POWER = null
+script = ExtResource("1_lmcfp")
 ENGINE_POSITION = Vector2(0, -18)
-LENGTH = null
-WIDTH = null
-PROPELLER_DIAMETER = null
-ANGULAR_ACCELERATION = null
-BASE_MASS = null
-ENGINE_FORWARD_MULTIPLIER = null
-ENGINE_BACKWARD_MULTIPLIER = null
-PHYSICAL_FORWARD_MULTIPLIER = null
-PHYSICAL_BACKWARD_MULTIPLIER = null
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)

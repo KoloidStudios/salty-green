@@ -1,5 +1,5 @@
 extends RigidBody2D
-class_name Base_ship
+class_name Vessel
 
 # let's use International standards
 # This is not based on real life examples.

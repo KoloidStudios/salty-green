@@ -1,5 +1,5 @@
-extends Base_ship
-class_name Player_ship
+extends Vessel
+class_name Player
 
 func _physics_process(_delta):
 	var vert_axis: float = Input.get_axis("down", "up")
