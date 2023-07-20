@@ -9,6 +9,7 @@ class_name Sub_viewport
 
 func _set_viewport_size() -> void:
 	sv_container.size = get_viewport_rect().size
+	camera.offset = sv_container.size/2
 
 func _ready() -> void:
 	get_tree().root.connect("size_changed", _set_viewport_size)
