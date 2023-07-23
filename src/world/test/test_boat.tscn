@@ -17,7 +17,7 @@ shader_parameter/WATER_COL = Color(0.270588, 0.831373, 0.796078, 1)
 shader_parameter/WATER2_COL = Color(0.32549, 0.580392, 0.560784, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 2.0
-shader_parameter/tile = Vector2(100, 100)
+shader_parameter/tile = Vector2(50, 50)
 shader_parameter/wave_speed = 1.5
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5h8xk"]
