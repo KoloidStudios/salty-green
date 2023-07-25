@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://uf3otym6vcdc"]
+[gd_scene load_steps=9 format=3 uid="uid://uf3otym6vcdc"]
 
 [ext_resource type="Script" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
+[ext_resource type="PackedScene" uid="uid://gsn7p5bjeh7u" path="res://src/ui/ui_sounds.tscn" id="2_igmil"]
 [ext_resource type="Script" path="res://src/ui/audio.gd" id="2_wd0oq"]
 
 [sub_resource type="Animation" id="Animation_xls8m"]
@@ -514,6 +515,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dfvad")
+
+[node name="ui_sounds" parent="." instance=ExtResource("2_igmil")]
+root_path = NodePath("..")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "start"
