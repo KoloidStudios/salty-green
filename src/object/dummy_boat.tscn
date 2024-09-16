@@ -10,11 +10,11 @@ friction = 0.35
 radius = 8.0
 
 [node name="dummy_boat" type="RigidBody2D"]
-inertia = 1.0
 physics_material_override = SubResource("PhysicsMaterial_757qy")
-max_contacts_reported = 3
-contact_monitor = true
+inertia = 1.0
 can_sleep = false
+contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_q27xo")
 
 [node name="sprite" type="Sprite2D" parent="."]

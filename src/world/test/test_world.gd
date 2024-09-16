@@ -2,9 +2,9 @@ extends Node2D
 
 @export var test_scene: PackedScene
 
-@onready var test_node   : Node2D       = test_scene.instantiate()
-@onready var sub_viewport: Sub_viewport = $sub_viewport
-@onready var debug_label : Label        = $ui/debug_ui/label
+@onready var test_node   : Node2D         = test_scene.instantiate()
+@onready var sub_viewport: World_viewport = $world_viewport
+@onready var debug_label : Label          = $ui/debug_ui/label
 
 func _ready() -> void:
 	# Debug purposes

@@ -13,7 +13,7 @@ shader_parameter/wave_speed = 1.5
 
 [node name="sea_background" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="rect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_b2fu4")
 offset_right = 100.0
 offset_bottom = 100.0

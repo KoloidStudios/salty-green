@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://src/world/test/test_world.gd" id="1_8tiwp"]
 [ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_a1coy"]
-[ext_resource type="PackedScene" uid="uid://c8hekslets0n" path="res://src/world/sub_viewport.tscn" id="3_fmuvy"]
+[ext_resource type="PackedScene" uid="uid://c8hekslets0n" path="res://src/world/world_viewport.tscn" id="3_fmuvy"]
 
 [node name="test_world" type="Node2D"]
 position = Vector2(0, -1)
 script = ExtResource("1_8tiwp")
 test_scene = ExtResource("1_a1coy")
 
-[node name="sub_viewport" parent="." instance=ExtResource("3_fmuvy")]
+[node name="world_viewport" parent="." instance=ExtResource("3_fmuvy")]
 
 [node name="ui" type="CanvasLayer" parent="."]
 
