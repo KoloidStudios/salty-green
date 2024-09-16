@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://buk7uchvp6xab"]
 
-[ext_resource type="Script" path="res://src/object/player.gd" id="1_if0t8"]
-[ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_7guwh"]
+[ext_resource type="Script" path="res://src/object/player.gd" id="1_1v81k"]
+[ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_qbakx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 friction = 0.35
@@ -15,11 +15,11 @@ inertia = 1.0
 continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 3
-script = ExtResource("1_if0t8")
+script = ExtResource("1_1v81k")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)
-texture = ExtResource("2_7guwh")
+texture = ExtResource("2_qbakx")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sokdn")

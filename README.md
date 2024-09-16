@@ -1,3 +1,3 @@
 # Salty-Green
 
-Godot 4.1 Stable
+Godot 4.3 Stable

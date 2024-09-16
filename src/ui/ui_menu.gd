@@ -25,6 +25,3 @@ func _on_quit_yes_pressed():
 	get_tree().quit()
 func _on_quit_no_pressed():
 	pass # Replace with function body.
-
-
-
