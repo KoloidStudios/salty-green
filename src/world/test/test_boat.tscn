@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/world/test/test_boat.gd" id="1_eaedm"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_nj38s"]
-[ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/world/boat.tscn" id="3_wff5l"]
+[ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/object/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
 [ext_resource type="PackedScene" uid="uid://bmj7qnk5brlud" path="res://src/object/dummy_boat.tscn" id="5_4x5s6"]
 [ext_resource type="Script" path="res://src/world/environment/day_night_cycle.gd" id="7_rkdlt"]
