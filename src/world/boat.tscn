@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://buk7uchvp6xab"]
+
+[ext_resource type="Script" path="res://src/object/player.gd" id="1_if0t8"]
+[ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_7guwh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
+friction = 0.35
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sokdn"]
+radius = 8.0
+
+[node name="boat" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_757qy")
+inertia = 1.0
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_if0t8")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -2.38419e-07)
+texture = ExtResource("2_7guwh")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sokdn")

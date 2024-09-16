@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvlskwkm5e64q"]
+
+[ext_resource type="Script" path="res://src/world/test/test_world.gd" id="1_8tiwp"]
+[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_a1coy"]
+[ext_resource type="PackedScene" uid="uid://c8hekslets0n" path="res://src/world/sub_viewport.tscn" id="3_fmuvy"]
+
+[node name="test_world" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_8tiwp")
+test_scene = ExtResource("1_a1coy")
+
+[node name="sub_viewport" parent="." instance=ExtResource("3_fmuvy")]
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="debug_ui" type="Control" parent="ui"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_bottom = -1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="label" type="Label" parent="ui/debug_ui"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 105.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 0
+text = "test"
