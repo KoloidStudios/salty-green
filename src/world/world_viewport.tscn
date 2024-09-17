@@ -1,17 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8hekslets0n"]
+[gd_scene load_steps=3 format=3 uid="uid://c8hekslets0n"]
 
 [ext_resource type="Script" path="res://src/world/world_viewport.gd" id="1_hfh7r"]
-[ext_resource type="Shader" path="res://src/shader/pixelate.gdshader" id="2_2ar1h"]
 [ext_resource type="PackedScene" uid="uid://cpbyqus3sro28" path="res://src/world/camera.tscn" id="3_wgxfq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3h3q"]
-shader = ExtResource("2_2ar1h")
 
 [node name="sub_viewport" type="Node2D"]
 script = ExtResource("1_hfh7r")
 
 [node name="sv_container" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_v3h3q")
 offset_right = 1280.0
 offset_bottom = 720.0
 stretch = true

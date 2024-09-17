@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://buk7uchvp6xab"]
 
-[ext_resource type="Script" path="res://src/object/player.gd" id="1_1v81k"]
+[ext_resource type="Script" path="res://src/objects/vessel/vessel.gd" id="1_nlvsb"]
 [ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_qbakx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
@@ -15,7 +15,7 @@ inertia = 1.0
 continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 3
-script = ExtResource("1_1v81k")
+script = ExtResource("1_nlvsb")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)
