@@ -10,15 +10,18 @@
 
 [sub_resource type="Environment" id="Environment_h15rt"]
 background_mode = 3
+background_color = Color(1, 1, 1, 1)
 glow_enabled = true
 glow_intensity = 1.0
 glow_mix = 0.0
 glow_blend_mode = 1
 glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 6.0
+glow_map_strength = 1.0
 fog_mode = 1
 fog_light_energy = 7.94
 fog_density = 1.0
-adjustment_brightness = 0.01
+adjustment_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5h8xk"]
 friction = 0.4
@@ -44,16 +47,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="base_sea" type="ColorRect" parent="environment"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 647.0
-
 [node name="sea" type="ColorRect" parent="environment"]
 material = ExtResource("2_ekula")
 layout_mode = 0
-offset_right = 291.0
-offset_bottom = 350.0
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 284.0
+offset_bottom = 347.0
 scale = Vector2(3.95549, 1.84885)
 color = Color(0, 0, 0, 1)
 

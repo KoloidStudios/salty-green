@@ -7,22 +7,22 @@
 
 [resource]
 shader = ExtResource("1_qm0vv")
-shader_parameter/WaterColour = Color(0.0534, 0.415927, 0.89, 1)
-shader_parameter/CausticTextureScale = 0.004
+shader_parameter/WaterColour = Color(0.054, 0.3783, 0.9, 1)
+shader_parameter/CausticTextureScale = 0.003
 shader_parameter/CausticMovementScale = 64.0
 shader_parameter/CausticMovementSpeed = 0.9
 shader_parameter/CausticMovementStrength = 0.035
-shader_parameter/CausticColour = Color(0, 1, 1, 0.611765)
-shader_parameter/CausticHighlightColour = Color(2, 2, 2, 0.9)
-shader_parameter/NoiseScale = 0.02
-shader_parameter/NoiseModulateSpeed = 0.5
+shader_parameter/CausticColour = Color(0.2976, 0.96, 0.91584, 1)
+shader_parameter/CausticHighlightColour = Color(1.1, 1.1, 1.1, 1)
+shader_parameter/NoiseScale = 0.004
+shader_parameter/NoiseModulateSpeed = 0.1
 shader_parameter/NoiseStrength = 0.3
-shader_parameter/SpecularNoiseMovementStrength = 100.0
+shader_parameter/SpecularNoiseMovementStrength = 255.0
 shader_parameter/SpecularSpeed = 4.0
-shader_parameter/SpecularScale1 = 0.15
-shader_parameter/SpecularScale2 = 0.6
-shader_parameter/SpecularThreshold = -45.0
-shader_parameter/SpecularColour = Color(1, 1, 1, 0.843137)
+shader_parameter/SpecularScale1 = 0.07
+shader_parameter/SpecularScale2 = 0.4
+shader_parameter/SpecularThreshold = -0.4
+shader_parameter/SpecularColour = Color(1, 1, 1.25, 1)
 shader_parameter/FoamColour = Color(1, 1, 1, 1)
 shader_parameter/WaveSpeed = 5.0
 shader_parameter/FoamNoiseScale = 0.0
