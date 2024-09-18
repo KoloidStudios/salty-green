@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://byqu58sdee6bn"]
 
 [ext_resource type="Script" path="res://src/world/test/test_boat.gd" id="1_eaedm"]
-[ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/boat.tscn" id="3_wff5l"]
+[ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
+[ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
 [ext_resource type="Script" path="res://src/objects/player.gd" id="5_cal0q"]
-[ext_resource type="Script" path="res://src/world/environment/day_night_cycle.gd" id="7_rkdlt"]
-[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://src/world/environment/daynightcycle-gradient-texture.tres" id="8_6ikb1"]
+[ext_resource type="PackedScene" uid="uid://drjgmrbgmn6lr" path="res://src/world/environment/day_night_cycle.tscn" id="6_y233g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xl8"]
 
@@ -23,6 +23,26 @@ size = Vector2(8, 648)
 [node name="test_boat" type="Node2D"]
 material = SubResource("ShaderMaterial_y5xl8")
 script = ExtResource("1_eaedm")
+
+[node name="environment" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="base_sea" type="ColorRect" parent="environment"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 647.0
+color = Color(0, 0.937255, 0.972549, 1)
+
+[node name="sea" type="ColorRect" parent="environment"]
+material = ExtResource("2_ekula")
+layout_mode = 0
+offset_right = 291.0
+offset_bottom = 350.0
+scale = Vector2(3.95549, 1.84885)
+color = Color(0, 0, 0, 1)
 
 [node name="map" type="Node2D" parent="."]
 
@@ -75,10 +95,7 @@ one_way_collision_margin = 16.0
 position = Vector2(118, 106)
 script = ExtResource("5_cal0q")
 
-[node name="day_night_cycle" type="CanvasModulate" parent="."]
-visible = false
-script = ExtResource("7_rkdlt")
-gradient_texture = ExtResource("8_6ikb1")
-
 [node name="dummy1" parent="." instance=ExtResource("3_wff5l")]
 position = Vector2(299, 253)
+
+[node name="day_night_cycle" parent="." instance=ExtResource("6_y233g")]

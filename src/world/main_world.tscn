@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvlskwkm5e64q"]
 
-[ext_resource type="Script" path="res://src/world/test/test_world.gd" id="1_8tiwp"]
-[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="1_a1coy"]
-[ext_resource type="PackedScene" uid="uid://c8hekslets0n" path="res://src/world/world_viewport.tscn" id="3_fmuvy"]
+[ext_resource type="Script" path="res://src/world/main_world.gd" id="1_8rghv"]
+[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="2_qur17"]
+[ext_resource type="PackedScene" uid="uid://c8hekslets0n" path="res://src/world/world_viewport.tscn" id="3_bljuk"]
 
-[node name="test_world" type="Node2D"]
+[node name="main_world" type="Node2D"]
 position = Vector2(0, -1)
-script = ExtResource("1_8tiwp")
-test_scene = ExtResource("1_a1coy")
+script = ExtResource("1_8rghv")
+world_scene = ExtResource("2_qur17")
 
-[node name="world_viewport" parent="." instance=ExtResource("3_fmuvy")]
+[node name="world_viewport" parent="." instance=ExtResource("3_bljuk")]
 
 [node name="ui" type="CanvasLayer" parent="."]
 
@@ -29,4 +29,3 @@ offset_top = 18.0
 offset_right = 105.0
 offset_bottom = 79.0
 theme_override_font_sizes/font_size = 0
-text = "test"
