@@ -5,9 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
 [ext_resource type="Script" path="res://src/objects/player.gd" id="5_cal0q"]
-[ext_resource type="PackedScene" uid="uid://drjgmrbgmn6lr" path="res://src/world/environment/day_night_cycle.tscn" id="6_y233g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xl8"]
+
+[sub_resource type="Environment" id="Environment_h15rt"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_mix = 0.0
+glow_blend_mode = 1
+glow_hdr_scale = 0.0
+fog_mode = 1
+fog_light_energy = 7.94
+fog_density = 1.0
+adjustment_brightness = 0.01
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5h8xk"]
 friction = 0.4
@@ -24,6 +35,9 @@ size = Vector2(8, 648)
 material = SubResource("ShaderMaterial_y5xl8")
 script = ExtResource("1_eaedm")
 
+[node name="we" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h15rt")
+
 [node name="environment" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -34,7 +48,6 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 647.0
-color = Color(0, 0.937255, 0.972549, 1)
 
 [node name="sea" type="ColorRect" parent="environment"]
 material = ExtResource("2_ekula")
@@ -97,5 +110,3 @@ script = ExtResource("5_cal0q")
 
 [node name="dummy1" parent="." instance=ExtResource("3_wff5l")]
 position = Vector2(299, 253)
-
-[node name="day_night_cycle" parent="." instance=ExtResource("6_y233g")]

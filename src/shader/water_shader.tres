@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=118 format=3 uid="uid://c25wx8oihvkgw"]
+[gd_resource type="VisualShader" load_steps=116 format=3 uid="uid://c25wx8oihvkgw"]
 
 [ext_resource type="Script" path="res://src/shader/water_shader_noise.gd" id="1_vmh8j"]
 
@@ -37,7 +37,9 @@ parameter_name = "SpecularScale1"
 operator = 4
 
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_ntnjx"]
+output_port_for_preview = 0
 default_input_values = [2, 0.0]
+linked_parent_graph_frame = 189
 initialized = true
 script = ExtResource("1_vmh8j")
 
@@ -243,8 +245,9 @@ operator = 2
 operator = 2
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_jxckq"]
-size = Vector2(5291.42, 2117.05)
+size = Vector2(487, 789)
 title = "Specular highlights"
+attached_nodes = PackedInt32Array(108)
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_3rpk5"]
 size = Vector2(2125.98, 1002.03)
@@ -257,6 +260,10 @@ title = "Get noise for foam"
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_1cxt8"]
 size = Vector2(5974.78, 1672.77)
 title = "Get foam along edge"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_2ewjb"]
+default_input_values = [0, 0.0, 1, 1.0]
+operator = 2
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_u7oaj"]
 size = Vector2(561, 456)
@@ -317,6 +324,7 @@ default_input_values = [0, Quaternion(0, 0, 0, 0)]
 op_type = 2
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_3qlje"]
+expanded_output_ports = [0]
 parameter_name = "WaterColour"
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_3ao2c"]
@@ -326,18 +334,6 @@ title = "Get noise to change opacity of texture to avoid repetition"
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_67j8j"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
 op_type = 5
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_f5cub"]
-default_input_values = [0, Quaternion(0, 0, 0, 0)]
-op_type = 2
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_423jk"]
-input_name = "color"
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_66d2g"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
-op_type = 2
-operator = 2
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_j2opg"]
 default_input_values = [0, Quaternion(0, 0, 0, 0)]
@@ -416,6 +412,7 @@ op_type = 0
 function = 17
 
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_3013e"]
+output_port_for_preview = 0
 default_input_values = [2, 0.0]
 initialized = true
 script = ExtResource("1_vmh8j")
@@ -902,8 +899,13 @@ void fragment() {
 	vec4 n_out122p0 = vec4(n_out123p0, n_out123p1, n_out123p2, n_out121p0);
 
 
+// FloatOp:193
+	float n_in193p1 = 1.00000;
+	float n_out193p0 = n_out121p0 * n_in193p1;
+
+
 // Mix:124
-	vec4 n_out124p0 = mix(n_out61p0, n_out122p0, vec4(n_out121p0));
+	vec4 n_out124p0 = mix(n_out61p0, n_out122p0, vec4(n_out193p0));
 
 
 // VectorDecompose:125
@@ -961,7 +963,7 @@ void fragment() {
 
 // MultiplyAdd:186
 	vec2 n_in186p2 = vec2(0.00000, 0.00000);
-	vec2 n_out186p0 = (n_out142p0 * vec2(n_out164p0)) + n_in186p2;
+	vec2 n_out186p0 = fma(n_out142p0, vec2(n_out164p0), n_in186p2);
 
 
 	vec4 n_out177p0;
@@ -1060,29 +1062,13 @@ void fragment() {
 	vec4 n_out136p0 = mix(n_out52p0, n_out175p0, vec4(n_out149p3));
 
 
-// Input:55
-	vec4 n_out55p0 = COLOR;
-
-
-// VectorOp:56
-	vec4 n_out56p0 = n_out136p0 * n_out55p0;
-
-
-// VectorDecompose:54
-	float n_out54p0 = n_out56p0.x;
-	float n_out54p1 = n_out56p0.y;
-	float n_out54p2 = n_out56p0.z;
-	float n_out54p3 = n_out56p0.w;
-
-
 // Output:0
 	COLOR.rgb = vec3(n_out136p0.xyz);
-	COLOR.a = n_out54p3;
 
 
 }
 "
-graph_offset = Vector2(1885.68, -574.695)
+graph_offset = Vector2(-2029.6, -157.644)
 mode = 1
 flags/light_only = false
 varyings/WorldPos = "0,3"
@@ -1095,7 +1081,7 @@ nodes/vertex/4/position = Vector2(-580, 220)
 nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_k6k8s")
 nodes/vertex/5/position = Vector2(-80, 140)
 nodes/vertex/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 4, 1, 4, 0, 5, 0)
-nodes/fragment/0/position = Vector2(7680, -1360)
+nodes/fragment/0/position = Vector2(7680, -1380)
 nodes/fragment/2/node = SubResource("VisualShaderNodeComment_u7oaj")
 nodes/fragment/2/position = Vector2(-6600, -880)
 nodes/fragment/5/node = SubResource("VisualShaderNodeComment_3ao2c")
@@ -1119,7 +1105,7 @@ nodes/fragment/18/position = Vector2(-3900, -1320)
 nodes/fragment/31/node = SubResource("VisualShaderNodeFloatOp_7j8n6")
 nodes/fragment/31/position = Vector2(-3260, -1600)
 nodes/fragment/32/node = SubResource("VisualShaderNodeVectorOp_n8ag8")
-nodes/fragment/32/position = Vector2(-4480, -580)
+nodes/fragment/32/position = Vector2(-4340, -560)
 nodes/fragment/36/node = SubResource("VisualShaderNodeCustom_ly4i5")
 nodes/fragment/36/position = Vector2(-3620, -1880)
 nodes/fragment/37/node = SubResource("VisualShaderNodeInput_vdqqg")
@@ -1131,7 +1117,7 @@ nodes/fragment/39/position = Vector2(-4780, -1340)
 nodes/fragment/40/node = SubResource("VisualShaderNodeVec2Constant_08fgj")
 nodes/fragment/40/position = Vector2(-4340, -2100)
 nodes/fragment/41/node = SubResource("VisualShaderNodeColorParameter_2lmii")
-nodes/fragment/41/position = Vector2(-5040, -100)
+nodes/fragment/41/position = Vector2(-5020, -220)
 nodes/fragment/42/node = SubResource("VisualShaderNodeTexture2DParameter_uapry")
 nodes/fragment/42/position = Vector2(-5820, 260)
 nodes/fragment/44/node = SubResource("VisualShaderNodeTexture_p2ky2")
@@ -1148,12 +1134,6 @@ nodes/fragment/49/node = SubResource("VisualShaderNodeColorParameter_3qlje")
 nodes/fragment/49/position = Vector2(860, -240)
 nodes/fragment/52/node = SubResource("VisualShaderNodeMix_67j8j")
 nodes/fragment/52/position = Vector2(1680, -380)
-nodes/fragment/54/node = SubResource("VisualShaderNodeVectorDecompose_f5cub")
-nodes/fragment/54/position = Vector2(7120, -900)
-nodes/fragment/55/node = SubResource("VisualShaderNodeInput_423jk")
-nodes/fragment/55/position = Vector2(6040, -680)
-nodes/fragment/56/node = SubResource("VisualShaderNodeVectorOp_66d2g")
-nodes/fragment/56/position = Vector2(6720, -980)
 nodes/fragment/57/node = SubResource("VisualShaderNodeVectorDecompose_j2opg")
 nodes/fragment/57/position = Vector2(-3340, -660)
 nodes/fragment/59/node = SubResource("VisualShaderNodeVectorFunc_tjkxx")
@@ -1207,7 +1187,7 @@ nodes/fragment/106/position = Vector2(-4160, -2700)
 nodes/fragment/107/node = SubResource("VisualShaderNodeColorOp_0qeah")
 nodes/fragment/107/position = Vector2(-3100, -3400)
 nodes/fragment/108/node = SubResource("VisualShaderNodeCustom_ntnjx")
-nodes/fragment/108/position = Vector2(-3200, -4200)
+nodes/fragment/108/position = Vector2(-3080, -4200)
 nodes/fragment/109/node = SubResource("VisualShaderNodeFloatParameter_1rnmi")
 nodes/fragment/109/position = Vector2(-4060, -4080)
 nodes/fragment/110/node = SubResource("VisualShaderNodeFloatConstant_dv2w2")
@@ -1235,7 +1215,7 @@ nodes/fragment/122/position = Vector2(320, -2220)
 nodes/fragment/123/node = SubResource("VisualShaderNodeVectorDecompose_qvcra")
 nodes/fragment/123/position = Vector2(-180, -2240)
 nodes/fragment/124/node = SubResource("VisualShaderNodeMix_o2il3")
-nodes/fragment/124/position = Vector2(680, -1580)
+nodes/fragment/124/position = Vector2(880, -1680)
 nodes/fragment/125/node = SubResource("VisualShaderNodeVectorDecompose_vd68o")
 nodes/fragment/125/position = Vector2(1180, -1080)
 nodes/fragment/126/node = SubResource("VisualShaderNodeFloatFunc_fgmke")
@@ -1313,11 +1293,13 @@ nodes/fragment/187/position = Vector2(1540, -4540)
 nodes/fragment/188/node = SubResource("VisualShaderNodeFloatOp_uqb5w")
 nodes/fragment/188/position = Vector2(1920, -3800)
 nodes/fragment/189/node = SubResource("VisualShaderNodeComment_jxckq")
-nodes/fragment/189/position = Vector2(-6260, -4380)
+nodes/fragment/189/position = Vector2(-3120, -4275)
 nodes/fragment/190/node = SubResource("VisualShaderNodeComment_3rpk5")
 nodes/fragment/190/position = Vector2(-7976.62, -1907.38)
 nodes/fragment/191/node = SubResource("VisualShaderNodeComment_1f650")
 nodes/fragment/191/position = Vector2(-680, -5380)
 nodes/fragment/192/node = SubResource("VisualShaderNodeComment_1cxt8")
 nodes/fragment/192/position = Vector2(-60, -3900)
-nodes/fragment/connections = PackedInt32Array(8, 0, 7, 1, 9, 0, 10, 2, 18, 0, 31, 1, 37, 0, 38, 0, 38, 0, 36, 3, 39, 0, 38, 1, 40, 0, 36, 1, 17, 0, 36, 2, 13, 0, 36, 0, 36, 0, 31, 0, 41, 0, 32, 1, 42, 0, 44, 2, 10, 0, 32, 0, 45, 0, 46, 1, 44, 0, 46, 0, 32, 0, 47, 0, 46, 0, 48, 0, 48, 3, 47, 2, 46, 0, 47, 1, 55, 0, 56, 1, 47, 0, 57, 0, 6, 0, 59, 0, 59, 0, 7, 0, 31, 0, 60, 0, 57, 3, 60, 1, 57, 0, 61, 0, 57, 1, 61, 1, 57, 2, 61, 2, 60, 0, 61, 3, 87, 0, 88, 0, 89, 0, 88, 1, 88, 0, 86, 3, 90, 0, 86, 2, 91, 0, 86, 1, 7, 0, 86, 0, 86, 0, 93, 0, 94, 0, 93, 1, 7, 0, 92, 0, 93, 0, 95, 0, 93, 0, 95, 1, 95, 0, 92, 1, 92, 0, 10, 0, 92, 0, 44, 0, 96, 0, 97, 0, 99, 0, 98, 3, 100, 0, 98, 1, 101, 0, 100, 1, 102, 0, 101, 0, 103, 0, 101, 1, 99, 0, 105, 3, 104, 0, 105, 1, 106, 0, 98, 2, 106, 0, 105, 2, 105, 0, 107, 0, 98, 0, 107, 1, 109, 0, 108, 2, 110, 0, 108, 3, 111, 0, 108, 1, 107, 0, 112, 0, 112, 0, 113, 0, 108, 0, 113, 1, 113, 0, 114, 0, 115, 0, 114, 1, 114, 0, 116, 0, 117, 0, 116, 1, 116, 0, 119, 0, 101, 0, 104, 1, 119, 3, 121, 0, 116, 0, 123, 0, 123, 0, 122, 0, 123, 1, 122, 1, 123, 2, 122, 2, 61, 0, 124, 0, 122, 0, 124, 1, 124, 0, 125, 0, 125, 3, 52, 2, 124, 0, 52, 1, 60, 0, 126, 0, 126, 0, 121, 1, 97, 0, 127, 0, 127, 0, 98, 0, 127, 0, 105, 0, 127, 0, 108, 0, 95, 0, 128, 0, 129, 0, 128, 1, 128, 0, 127, 1, 121, 0, 124, 2, 121, 0, 122, 3, 130, 0, 131, 0, 52, 0, 136, 0, 136, 0, 56, 0, 149, 3, 136, 2, 142, 0, 150, 0, 155, 0, 156, 0, 169, 0, 170, 0, 170, 0, 171, 0, 172, 0, 156, 1, 174, 0, 175, 3, 173, 0, 175, 0, 173, 1, 175, 1, 173, 2, 175, 2, 173, 3, 174, 1, 132, 0, 173, 0, 175, 0, 136, 1, 175, 0, 149, 0, 176, 0, 177, 2, 180, 0, 169, 1, 180, 0, 171, 1, 171, 0, 174, 0, 179, 0, 165, 0, 131, 0, 181, 0, 165, 0, 181, 1, 182, 0, 183, 1, 178, 0, 179, 0, 183, 0, 178, 1, 56, 0, 54, 0, 181, 0, 184, 0, 184, 0, 169, 0, 131, 0, 185, 0, 185, 0, 183, 0, 164, 0, 186, 1, 186, 0, 177, 0, 177, 0, 187, 0, 163, 0, 187, 1, 156, 0, 188, 0, 187, 0, 188, 1, 188, 0, 178, 0, 142, 0, 186, 0, 49, 0, 52, 0, 54, 3, 0, 1, 136, 0, 0, 0)
+nodes/fragment/193/node = SubResource("VisualShaderNodeFloatOp_2ewjb")
+nodes/fragment/193/position = Vector2(320, -1460)
+nodes/fragment/connections = PackedInt32Array(8, 0, 7, 1, 9, 0, 10, 2, 18, 0, 31, 1, 37, 0, 38, 0, 38, 0, 36, 3, 39, 0, 38, 1, 40, 0, 36, 1, 17, 0, 36, 2, 13, 0, 36, 0, 36, 0, 31, 0, 41, 0, 32, 1, 42, 0, 44, 2, 10, 0, 32, 0, 45, 0, 46, 1, 44, 0, 46, 0, 46, 0, 48, 0, 48, 3, 47, 2, 46, 0, 47, 1, 6, 0, 59, 0, 59, 0, 7, 0, 31, 0, 60, 0, 57, 3, 60, 1, 57, 0, 61, 0, 57, 1, 61, 1, 57, 2, 61, 2, 60, 0, 61, 3, 87, 0, 88, 0, 89, 0, 88, 1, 88, 0, 86, 3, 90, 0, 86, 2, 91, 0, 86, 1, 7, 0, 86, 0, 86, 0, 93, 0, 94, 0, 93, 1, 7, 0, 92, 0, 93, 0, 95, 0, 93, 0, 95, 1, 95, 0, 92, 1, 92, 0, 10, 0, 92, 0, 44, 0, 96, 0, 97, 0, 99, 0, 98, 3, 100, 0, 98, 1, 101, 0, 100, 1, 102, 0, 101, 0, 103, 0, 101, 1, 99, 0, 105, 3, 104, 0, 105, 1, 106, 0, 98, 2, 106, 0, 105, 2, 105, 0, 107, 0, 98, 0, 107, 1, 109, 0, 108, 2, 110, 0, 108, 3, 111, 0, 108, 1, 107, 0, 112, 0, 112, 0, 113, 0, 108, 0, 113, 1, 113, 0, 114, 0, 115, 0, 114, 1, 114, 0, 116, 0, 117, 0, 116, 1, 116, 0, 119, 0, 101, 0, 104, 1, 119, 3, 121, 0, 116, 0, 123, 0, 123, 0, 122, 0, 123, 1, 122, 1, 123, 2, 122, 2, 124, 0, 125, 0, 124, 0, 52, 1, 60, 0, 126, 0, 126, 0, 121, 1, 97, 0, 127, 0, 127, 0, 98, 0, 127, 0, 105, 0, 127, 0, 108, 0, 95, 0, 128, 0, 129, 0, 128, 1, 128, 0, 127, 1, 121, 0, 122, 3, 130, 0, 131, 0, 149, 3, 136, 2, 142, 0, 150, 0, 155, 0, 156, 0, 169, 0, 170, 0, 170, 0, 171, 0, 172, 0, 156, 1, 174, 0, 175, 3, 173, 0, 175, 0, 173, 1, 175, 1, 173, 2, 175, 2, 173, 3, 174, 1, 132, 0, 173, 0, 175, 0, 149, 0, 176, 0, 177, 2, 180, 0, 169, 1, 180, 0, 171, 1, 171, 0, 174, 0, 179, 0, 165, 0, 131, 0, 181, 0, 165, 0, 181, 1, 182, 0, 183, 1, 178, 0, 179, 0, 183, 0, 178, 1, 181, 0, 184, 0, 184, 0, 169, 0, 131, 0, 185, 0, 185, 0, 183, 0, 164, 0, 186, 1, 186, 0, 177, 0, 177, 0, 187, 0, 163, 0, 187, 1, 156, 0, 188, 0, 187, 0, 188, 1, 188, 0, 178, 0, 142, 0, 186, 0, 136, 0, 0, 0, 52, 0, 136, 0, 175, 0, 136, 1, 49, 0, 52, 0, 122, 0, 124, 1, 61, 0, 124, 0, 47, 0, 57, 0, 32, 0, 47, 0, 121, 0, 193, 0, 193, 0, 124, 2, 125, 3, 52, 2)

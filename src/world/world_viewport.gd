@@ -29,6 +29,6 @@ func _process(_delta: float):
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			if camera.zoom.x <= 3.0: update_zoom(0.1)
+			if camera.zoom.x <= 4.0: update_zoom(0.1)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			if camera.zoom.x >= 1.0: update_zoom(-0.1)

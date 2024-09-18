@@ -23,6 +23,3 @@ texture = ExtResource("2_krfwm")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sokdn")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.14

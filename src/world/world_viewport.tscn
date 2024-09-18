@@ -13,8 +13,10 @@ stretch = true
 
 [node name="sub_viewport" type="SubViewport" parent="sv_container"]
 handle_input_locally = false
+use_hdr_2d = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="camera" parent="." instance=ExtResource("3_wgxfq")]
+position_smoothing_speed = 2.0
