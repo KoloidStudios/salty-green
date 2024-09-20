@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://uf3otym6vcdc"]
+[gd_scene load_steps=8 format=3 uid="uid://uf3otym6vcdc"]
 
 [ext_resource type="Script" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
-[ext_resource type="PackedScene" uid="uid://gsn7p5bjeh7u" path="res://src/ui/ui_sounds.tscn" id="2_igmil"]
 [ext_resource type="Script" path="res://src/ui/audio.gd" id="2_wd0oq"]
 
 [sub_resource type="Animation" id="Animation_xls8m"]
@@ -516,14 +515,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dfvad")
 
-[node name="ui_sounds" parent="." instance=ExtResource("2_igmil")]
-root_path = NodePath("..")
-
 [node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_kq0dt")
 }
+autoplay = "start"
 
 [node name="label" type="Label" parent="."]
 layout_mode = 1
@@ -553,7 +549,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -77.0
 offset_top = -104.0
-offset_right = 75.0
+offset_right = 80.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -586,7 +582,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -138.0
 offset_top = -119.0
-offset_right = 62.0
+offset_right = 67.0
 offset_bottom = 47.001
 grow_horizontal = 2
 grow_vertical = 2
