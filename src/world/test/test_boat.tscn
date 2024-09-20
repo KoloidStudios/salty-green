@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://byqu58sdee6bn"]
+[gd_scene load_steps=12 format=3 uid="uid://byqu58sdee6bn"]
 
 [ext_resource type="Script" path="res://src/world/test/test_boat.gd" id="1_eaedm"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
+[ext_resource type="PackedScene" uid="uid://drjgmrbgmn6lr" path="res://src/world/environment/daycycle.tscn" id="3_ohuau"]
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
 [ext_resource type="Script" path="res://src/objects/player.gd" id="5_cal0q"]
@@ -10,7 +11,6 @@
 
 [sub_resource type="Environment" id="Environment_h15rt"]
 background_mode = 3
-background_color = Color(1, 1, 1, 1)
 glow_enabled = true
 glow_intensity = 1.0
 glow_mix = 0.0
@@ -56,6 +56,8 @@ offset_right = 284.0
 offset_bottom = 347.0
 scale = Vector2(3.95549, 1.84885)
 color = Color(0, 0, 0, 1)
+
+[node name="daycycle" parent="environment" instance=ExtResource("3_ohuau")]
 
 [node name="map" type="Node2D" parent="."]
 
