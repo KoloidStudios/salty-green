@@ -9,6 +9,7 @@
 script = ExtResource("1_6muir")
 _rotatable_node = NodePath("cannon_top")
 _projectile = ExtResource("2_uif0t")
+_fire_point = Vector2(14, 0)
 
 [node name="cannon_base" type="Sprite2D" parent="."]
 texture = ExtResource("2_bfke6")
