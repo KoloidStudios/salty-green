@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cggvcy1q08esp"]
+
+[ext_resource type="Script" path="res://src/objects/weapon/weapon.gd" id="1_6muir"]
+[ext_resource type="Texture2D" uid="uid://b0lejgnq43ura" path="res://assets/objects/weapon/cannon_base.png" id="2_bfke6"]
+[ext_resource type="PackedScene" uid="uid://duvjserim5ufa" path="res://src/objects/weapon/projectiles/cannon_bullet.tscn" id="2_uif0t"]
+[ext_resource type="Texture2D" uid="uid://cntqjfk6do24h" path="res://assets/objects/weapon/cannon_top.png" id="3_nk4w1"]
+
+[node name="cannon" type="Node2D" node_paths=PackedStringArray("_rotatable_node")]
+script = ExtResource("1_6muir")
+_rotatable_node = NodePath("cannon_top")
+_projectile = ExtResource("2_uif0t")
+
+[node name="cannon_base" type="Sprite2D" parent="."]
+texture = ExtResource("2_bfke6")
+
+[node name="cannon_top" type="Sprite2D" parent="."]
+rotation = -0.000630875
+texture = ExtResource("3_nk4w1")

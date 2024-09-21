@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://buk7uchvp6xab"]
+[gd_scene load_steps=8 format=3 uid="uid://buk7uchvp6xab"]
 
 [ext_resource type="Script" path="res://src/objects/vessel/vessel.gd" id="1_opm52"]
-[ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/test/boat.png" id="2_krfwm"]
+[ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/objects/vessel/boat.png" id="2_krfwm"]
+[ext_resource type="PackedScene" uid="uid://cggvcy1q08esp" path="res://src/objects/weapon/models/cannon.tscn" id="2_xqhtl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 friction = 0.35
@@ -16,7 +17,7 @@ colors = PackedColorArray(1, 1, 5.377, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_odipc"]
 gradient = SubResource("Gradient_62fr3")
 fill = 1
-fill_from = Vector2(0.491453, 0.5)
+fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [node name="boat" type="RigidBody2D"]
@@ -26,6 +27,14 @@ continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("1_opm52")
+ENGINE_POWER = 50.0
+LENGTH = 2.0
+WIDTH = 0.5
+PROPELLER_DIAMETER = 0.4
+ANGULAR_ACCELERATION = 0.1
+BASE_MASS = 400.0
+BASE_HEALTH_POINT = 200.0
+DEFAULT_WEAPON = ExtResource("2_xqhtl")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)
@@ -33,6 +42,8 @@ texture = ExtResource("2_krfwm")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sokdn")
+
+[node name="weapon" type="Node2D" parent="."]
 
 [node name="light" type="PointLight2D" parent="."]
 scale = Vector2(1.625, 1.625)

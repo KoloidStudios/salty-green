@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dra83214ydfbt"
-path="res://.godot/imported/boat.png-48667746fd66163ef70955330f3c4838.ctex"
+uid="uid://bpupqw4upaee5"
+path="res://.godot/imported/cannon.png-92bc7602afc1ba518dc9d6e609f4b118.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/test/boat.png"
-dest_files=["res://.godot/imported/boat.png-48667746fd66163ef70955330f3c4838.ctex"]
+source_file="res://assets/objects/weapon/projectiles/cannon.png"
+dest_files=["res://.godot/imported/cannon.png-92bc7602afc1ba518dc9d6e609f4b118.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

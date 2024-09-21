@@ -2,9 +2,16 @@ extends Vessel
 class_name Player
 
 func _physics_process(_delta):
-	# Get input
+	# Get inputs
+	# Directional inputs
 	var vert_axis: float = Input.get_axis("down", "up")
 	var horz_axis: float = Input.get_axis("left", "right")
+
+	# Mouse inputs
+	var mouse_position := get_viewport().get_mouse_position()
+	_weapon.rotate_to(mouse_position)
+	if Input.is_action_just_pressed("fire"):
+		_weapon.fire(mouse_position)
 
 	#Vessel::_linear_direction
 	_linear_direction = int(vert_axis)

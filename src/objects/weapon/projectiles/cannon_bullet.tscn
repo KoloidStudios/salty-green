@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://duvjserim5ufa"]
+
+[ext_resource type="Script" path="res://src/objects/weapon/weapon_projectile.gd" id="1_6ensk"]
+[ext_resource type="Texture2D" uid="uid://bpupqw4upaee5" path="res://assets/objects/weapon/projectiles/cannon.png" id="2_ef1yd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1nqi"]
+size = Vector2(4, 4)
+
+[sub_resource type="Gradient" id="Gradient_j3t5m"]
+offsets = PackedFloat32Array(0, 0.578711)
+colors = PackedColorArray(2, 0.83, 0.32, 0.784, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_41csw"]
+gradient = SubResource("Gradient_j3t5m")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="cannon_bullet" type="Area2D"]
+script = ExtResource("1_6ensk")
+_lifetime_seconds = 8.0
+_speed = 200.0
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ef1yd")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b1nqi")
+
+[node name="light" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_41csw")
