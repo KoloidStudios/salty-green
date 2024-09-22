@@ -10,7 +10,7 @@ func rotate_to(target: Vector2) -> void:
 	
 func fire(target: Vector2) -> void:
 	var object: Weapon_projectile = _projectile.instantiate()
-	object.position = global_position + _fire_point.rotated(get_angle_to(target)) 
+	object.target = target
+	object.position = global_position + _fire_point.rotated(global_rotation + get_angle_to(target)) 
 	get_viewport().add_child(object)
-	object.activate(target)	
 	

@@ -22,11 +22,6 @@ config/icon="res://assets/icon.svg"
 Config="*res://src/autoloader/config.gd"
 Settings="*res://src/autoloader/settings.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-settings/stdout/print_gpu_profile=true
-
 [display]
 
 window/size/viewport_width=1280

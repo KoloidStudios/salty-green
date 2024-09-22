@@ -18,8 +18,8 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="cannon_bullet" type="Area2D"]
 script = ExtResource("1_6ensk")
-_lifetime_seconds = 8.0
 _speed = 200.0
+_lifetime_seconds = 8.0
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_ef1yd")
