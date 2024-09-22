@@ -9,6 +9,7 @@ var timer := Timer.new()
 var target := Vector2(0.0, 0.0)
 
 func _ready() -> void:
+	connect("body_entered", hit)
 	look_at(target)
 
 	add_child(timer)
@@ -19,6 +20,11 @@ func _ready() -> void:
 
 func kill() -> void:
 	queue_free()
+	
+func hit(body: Node2D) -> void:
+	if !body.is_in_group(get_groups()[0]):
+		timer.stop()
+		kill()
 	
 func _physics_process(delta: float) -> void:
 	if !timer.is_stopped():

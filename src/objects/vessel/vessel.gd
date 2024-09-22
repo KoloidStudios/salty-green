@@ -10,7 +10,6 @@ class_name Vessel
 @export var ANGULAR_ACCELERATION : float#m/s^2
 @export var BASE_MASS            : float#kg
 @export var BASE_HEALTH_POINT    : float
-@export var DEFAULT_WEAPON       : PackedScene
 
 # Private Members
 var _speed             : float = 0.0
@@ -18,9 +17,11 @@ var _inverse_mass      : float = 0.0
 var _linear_direction  : int = 0
 var _angular_direction : int = 0
 var _health_point      : int = 0
+var _has_weapon        : bool = false
 
 @onready var _engine := Vessel_engine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
-@onready var _weapon : Weapon = null
+@onready var _weapons: Array[Weapon] = []
+@onready var _weapons_node: Node2D = find_child("weapons")
 
 # Private Methods
 # Mass modifier
@@ -50,25 +51,47 @@ func remove_mass(m: float) -> void:
 	var new_mass := mass - m
 	_update_mass(new_mass)
 
-func change_weapon(wep: Weapon) -> void:
-	_weapon = wep
-	for child: Weapon in $weapon.get_children():
-		$weapon.remove_child(child)
-	$weapon.add_child(wep)
+func change_weapon(weapon: Weapon, index: int) -> void:
+	assert(index < _weapons_node.get_child_count())
+	var weapon_slot: Node2D = _weapons_node.get_child(index)
+	# Mostly this is just one weapon
+	for equipped: Weapon in _weapons_node.get_child(index).get_children():
+		weapon_slot.remove_child(equipped)
+		_weapons.erase(equipped)
+	if weapon != null:
+		weapon_slot.add_child(weapon)
+		_weapons.append(weapon)
 
 func get_speed() -> float:
 	return _speed
 
+func get_weapons() -> Array[Weapon]:
+	return _weapons
+	
+func get_weapon_at(index: int) -> Weapon:
+	var weapon_slot: Node2D = _weapons_node.get_child(index)
+	if weapon_slot.get_child_count() != 0:
+		return weapon_slot.get_child(0)
+	return null
+
 func is_moving() -> bool:
 	return bool(_linear_direction) or bool(_angular_direction)
 
+func has_weapon() -> bool:
+	return !_weapons.is_empty()
+
+func has_weapon_slot() -> bool:
+	return _weapons_node != null
+
 # Godot Functions
 func _ready() -> void:
+	# Check for weapons
+	if has_weapon_slot():
+		for weapon_slot: Node2D in _weapons_node.get_children():
+			if weapon_slot.get_child_count() != 0:
+				_weapons.append(weapon_slot.get_child(0))
 	_update_mass(BASE_MASS)
 	_health_point = BASE_HEALTH_POINT
-
-	var weapon: Weapon = DEFAULT_WEAPON.instantiate()
-	change_weapon(weapon)
 
 func _physics_process(_delta) -> void:
 	var applied_force := Vector2.ZERO
