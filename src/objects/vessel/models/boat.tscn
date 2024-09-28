@@ -22,9 +22,6 @@ fill_to = Vector2(1, 1)
 [node name="boat" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_757qy")
 inertia = 1.0
-continuous_cd = 2
-contact_monitor = true
-max_contacts_reported = 3
 script = ExtResource("1_opm52")
 ENGINE_POWER = 50.0
 LENGTH = 2.0

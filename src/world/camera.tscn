@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cpbyqus3sro28"]
-
-[node name="camera" type="Camera2D"]
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0

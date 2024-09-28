@@ -10,7 +10,7 @@ func _ready():
 #Play___________________________
 func _on_play_pressed():
 	$anim.play("play_pressed")
-	get_tree().change_scene_to_file("res://src/world/main_world.tscn")
+	get_tree().change_scene_to_file("res://src/world/world_manager.tscn")
 func _on_back_profile_pressed():
 	$anim.play_backwards("play_pressed")
 

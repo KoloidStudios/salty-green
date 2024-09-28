@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://byqu58sdee6bn"]
+[gd_scene load_steps=11 format=3 uid="uid://byqu58sdee6bn"]
 
-[ext_resource type="Script" path="res://src/world/test/test_boat.gd" id="1_eaedm"]
+[ext_resource type="Script" path="res://src/world/world.gd" id="1_bc54p"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
 [ext_resource type="PackedScene" uid="uid://drjgmrbgmn6lr" path="res://src/world/environment/daycycle.tscn" id="3_ohuau"]
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
-[ext_resource type="PackedScene" uid="uid://doboawrveqyxb" path="res://src/objects/vessel/models/debug_boat.tscn" id="5_tir46"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xl8"]
 
@@ -36,7 +35,7 @@ size = Vector2(8, 648)
 
 [node name="test_boat" type="Node2D"]
 material = SubResource("ShaderMaterial_y5xl8")
-script = ExtResource("1_eaedm")
+script = ExtResource("1_bc54p")
 
 [node name="we" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h15rt")
@@ -106,8 +105,5 @@ position = Vector2(576, 653)
 shape = SubResource("RectangleShape2D_ol1is")
 one_way_collision_margin = 16.0
 
-[node name="player" parent="." instance=ExtResource("5_tir46")]
-position = Vector2(118, 168)
-
-[node name="dummy1" parent="." instance=ExtResource("3_wff5l")]
-position = Vector2(299, 253)
+[node name="boat" parent="." instance=ExtResource("3_wff5l")]
+position = Vector2(256, 262)

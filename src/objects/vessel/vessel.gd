@@ -14,14 +14,16 @@ class_name Vessel
 # Private Members
 var _speed             : float = 0.0
 var _inverse_mass      : float = 0.0
-var _linear_direction  : int = 0
-var _angular_direction : int = 0
 var _health_point      : int = 0
 var _has_weapon        : bool = false
 
 @onready var _engine := Vessel_engine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
 @onready var _weapons: Array[Weapon] = []
 @onready var _weapons_node: Node2D = find_child("weapons")
+
+# Public Members
+var linear_direction  : int = 0
+var angular_direction : int = 0
 
 # Private Methods
 # Mass modifier
@@ -75,7 +77,7 @@ func get_weapon_at(index: int) -> Weapon:
 	return null
 
 func is_moving() -> bool:
-	return bool(_linear_direction) or bool(_angular_direction)
+	return bool(linear_direction) or bool(angular_direction)
 
 func has_weapon() -> bool:
 	return !_weapons.is_empty()
@@ -96,10 +98,10 @@ func _ready() -> void:
 func _physics_process(_delta) -> void:
 	var applied_force := Vector2.ZERO
 
-	if _linear_direction:
-		applied_force = transform.y * _engine.get_thrust(_linear_direction)
-	if _angular_direction:
-		apply_torque(_angular_direction * inertia * ANGULAR_ACCELERATION * Config.meter_to_pixel_multiplier)
+	if linear_direction:
+		applied_force = transform.y * _engine.get_thrust(linear_direction)
+	if angular_direction:
+		apply_torque(angular_direction * inertia * ANGULAR_ACCELERATION * Config.meter_to_pixel_multiplier)
 
 	_speed = linear_velocity.length() * Config.pixel_to_meter_multiplier
 	linear_damp = max(_calc_linear_damp(), 1)
@@ -112,4 +114,4 @@ func debug_drag_force() -> float:
 	return 0.5 * 1000 * pow(_speed, 2) * 0.7 * WIDTH * LENGTH
 
 func debug_terminal_velocity() -> float:
-	return sqrt(2 * abs(_engine.get_thrust(_linear_direction)) / (1000 * 0.7 * WIDTH * LENGTH))
+	return sqrt(2 * abs(_engine.get_thrust(linear_direction)) / (1000 * 0.7 * WIDTH * LENGTH))
