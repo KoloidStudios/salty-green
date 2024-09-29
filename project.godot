@@ -19,8 +19,9 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Config="*res://src/autoloader/config.gd"
+Utility="*res://src/autoloader/utility.gd"
 Settings="*res://src/autoloader/settings.gd"
+Modules="*res://src/autoloader/modules.gd"
 
 [display]
 

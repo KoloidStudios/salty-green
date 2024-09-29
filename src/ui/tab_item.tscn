@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvtgvjx806pck"]
+
+[ext_resource type="Script" path="res://src/ui/tab_item.gd" id="1_dg0dj"]
+
+[node name="tab_item" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dg0dj")
+
+[node name="vertical" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="icon" type="TextureRect" parent="vertical"]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="label" type="Label" parent="vertical"]
+layout_mode = 2

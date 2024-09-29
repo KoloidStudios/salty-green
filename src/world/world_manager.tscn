@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvlskwkm5e64q"]
+[gd_scene load_steps=5 format=3 uid="uid://cvlskwkm5e64q"]
 
 [ext_resource type="Script" path="res://src/world/world_manager.gd" id="1_t21ax"]
 [ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="2_7yqh0"]
+[ext_resource type="PackedScene" uid="uid://bg4x5qkkdlr5" path="res://src/ui/debug_interface.tscn" id="4_g26pc"]
 [ext_resource type="Script" path="res://src/world/player.gd" id="4_qnbhs"]
 
 [node name="world_manager" type="Node2D"]
@@ -28,21 +29,4 @@ position_smoothing_enabled = true
 [node name="player" type="Node2D" parent="."]
 script = ExtResource("4_qnbhs")
 
-[node name="ui" type="CanvasLayer" parent="."]
-
-[node name="debug_ui" type="Control" parent="ui"]
-layout_direction = 1
-layout_mode = 3
-anchors_preset = 0
-offset_top = -1.0
-offset_bottom = -1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="label" type="Label" parent="ui/debug_ui"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 18.0
-offset_right = 105.0
-offset_bottom = 79.0
-theme_override_font_sizes/font_size = 0
+[node name="debug_interface" parent="." instance=ExtResource("4_g26pc")]

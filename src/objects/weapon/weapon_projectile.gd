@@ -22,7 +22,8 @@ func kill() -> void:
 	queue_free()
 	
 func hit(body: Node2D) -> void:
-	if !body.is_in_group(get_groups()[0]):
+	if body is Vessel and !body.is_in_group(get_groups()[0]):
+		body.damage(_damage)
 		timer.stop()
 		kill()
 	

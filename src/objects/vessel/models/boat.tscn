@@ -29,7 +29,7 @@ WIDTH = 0.5
 PROPELLER_DIAMETER = 0.4
 ANGULAR_ACCELERATION = 0.1
 BASE_MASS = 400.0
-BASE_HEALTH_POINT = 200.0
+icon = ExtResource("2_krfwm")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)

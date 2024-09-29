@@ -9,21 +9,24 @@ class_name Vessel
 @export var PROPELLER_DIAMETER   : float#m
 @export var ANGULAR_ACCELERATION : float#m/s^2
 @export var BASE_MASS            : float#kg
-@export var BASE_HEALTH_POINT    : float
 
 # Private Members
-var _speed             : float = 0.0
-var _inverse_mass      : float = 0.0
-var _health_point      : int = 0
-var _has_weapon        : bool = false
+var _speed       : float = 0.0
+var _inverse_mass: float = 0.0
+var _animation: AnimationPlayer = null
+@export var _health_point: int = 100
+# Trail on water
+var _trail: Line2D
 
 @onready var _engine := Vessel_engine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
 @onready var _weapons: Array[Weapon] = []
 @onready var _weapons_node: Node2D = find_child("weapons")
 
 # Public Members
-var linear_direction  : int = 0
-var angular_direction : int = 0
+var linear_direction : int = 0
+var angular_direction: int = 0
+# Module purpose
+@export var icon: Texture2D
 
 # Private Methods
 # Mass modifier
@@ -36,7 +39,7 @@ func _update_mass(m: float) -> void:
 	# 1/4 MR^2 + 1/12ML^2
 	# (1/4 R^2 + 1/12L^2) * M
 	#RigidBody2D::inertia
-	inertia = (0.25 * pow(WIDTH, 2) + 0.08334 * pow(LENGTH, 2)) * mass * pow(Config.meter_to_pixel_multiplier, 2)
+	inertia = (0.25 * pow(WIDTH, 2) + 0.08334 * pow(LENGTH, 2)) * mass * Utility.METER_TO_PIXEL_SQUARED
 
 
 func _calc_linear_damp() -> float:
@@ -63,6 +66,15 @@ func change_weapon(weapon: Weapon, index: int) -> void:
 	if weapon != null:
 		weapon_slot.add_child(weapon)
 		_weapons.append(weapon)
+
+func damage(amount: int) -> void:
+	_health_point -= amount
+	if _health_point <= 0:
+		# dead
+		queue_free()
+
+func get_animation() -> AnimationPlayer:
+	return _animation
 
 func get_speed() -> float:
 	return _speed
@@ -93,20 +105,27 @@ func _ready() -> void:
 			if weapon_slot.get_child_count() != 0:
 				_weapons.append(weapon_slot.get_child(0))
 	_update_mass(BASE_MASS)
-	_health_point = BASE_HEALTH_POINT
+	
+	var scene := preload("res://src/objects/vessel/animation.tscn")
+	
+	_animation = scene.instantiate()
+	add_child(_animation)
 
-func _physics_process(_delta) -> void:
+func _process(_delta) -> void:
+	pass
+
+func _physics_process(_delta: float) -> void:
 	var applied_force := Vector2.ZERO
 
 	if linear_direction:
 		applied_force = transform.y * _engine.get_thrust(linear_direction)
 	if angular_direction:
-		apply_torque(angular_direction * inertia * ANGULAR_ACCELERATION * Config.meter_to_pixel_multiplier)
+		apply_torque(Utility.METER_TO_PIXEL * angular_direction * inertia * ANGULAR_ACCELERATION)
 
-	_speed = linear_velocity.length() * Config.pixel_to_meter_multiplier
+	_speed = Utility.PIXEL_TO_METER * linear_velocity.length() 
 	linear_damp = max(_calc_linear_damp(), 1)
 
-	apply_force(Config.meter_to_pixel_multiplier * applied_force)
+	apply_force(Utility.METER_TO_PIXEL * applied_force)
 
 # Debug Functions
 func debug_drag_force() -> float:

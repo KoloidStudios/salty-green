@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bg4x5qkkdlr5"]
+
+[node name="debug_interface" type="CanvasLayer"]
+
+[node name="label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="modules_list" type="TabContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+current_tab = 0
+
+[node name="vessels" type="TabBar" parent="modules_list"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="weapons" type="TabBar" parent="modules_list"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

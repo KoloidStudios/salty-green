@@ -10,11 +10,11 @@ var world: World = null :
 		raycast = RayCast2D.new()
 		raycast.target_position = Vector2(0.0, 0.0)
 		raycast.hit_from_inside = true
-		raycast.enabled = false
 		value.add_child(raycast)
 var vessel: Vessel = null
 var camera: Camera2D = null
 var raycast: RayCast2D = null
+var hovered_object: Node2D = null
 
 func update_zoom(amount: float):
 	camera.zoom += Vector2(amount, amount)
@@ -31,14 +31,10 @@ func _input(event: InputEvent) -> void:
 			if camera.zoom.x >= 1.0: update_zoom(-0.1)
 		if event.button_index == MOUSE_BUTTON_MASK_LEFT and event.pressed:
 			if event.ctrl_pressed:
-				raycast.enabled = true
-				raycast.global_position = get_global_mouse_position()
-				raycast.force_raycast_update()
 				if raycast.is_colliding():
 					var clicked_object = raycast.get_collider()
 					if clicked_object is Vessel:
 						vessel = clicked_object
-				raycast.enabled = false
 			elif vessel != null:
 				var mouse_position := get_viewport().get_mouse_position()
 				for weapon: Weapon in vessel.get_weapons():
@@ -48,9 +44,21 @@ func _input(event: InputEvent) -> void:
 			var mouse_position := get_viewport().get_mouse_position()
 			for weapon: Weapon in vessel.get_weapons():
 				weapon.rotate_to(mouse_position)
+		elif event.ctrl_pressed and raycast.is_colliding():
+			hovered_object = raycast.get_collider()
+			if hovered_object is Vessel and hovered_object != vessel:
+				hovered_object.get_animation().play("blink")
+		elif hovered_object != null:
+			if hovered_object is Vessel:
+				hovered_object.get_animation().stop()
+			hovered_object = null
 	elif event is InputEventKey:
 		if event.ctrl_pressed and event.pressed and event.keycode == KEY_X:
 			vessel = null
+
+func _process(_delta: float) -> void:
+	raycast.global_position = get_global_mouse_position()
+
 func _physics_process(_delta: float) -> void:
 	# Get inputs
 	# Directional inputs
