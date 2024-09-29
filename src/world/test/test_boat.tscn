@@ -105,8 +105,11 @@ position = Vector2(576, 653)
 shape = SubResource("RectangleShape2D_ol1is")
 one_way_collision_margin = 16.0
 
-[node name="boat" parent="." groups=["A"] instance=ExtResource("3_wff5l")]
-position = Vector2(256, 262)
+[node name="boat" parent="." instance=ExtResource("3_wff5l")]
+position = Vector2(234, 208)
 
 [node name="boat2" parent="." instance=ExtResource("3_wff5l")]
 position = Vector2(407, 329)
+
+[node name="boat3" parent="." instance=ExtResource("3_wff5l")]
+position = Vector2(205, 382)

@@ -16,7 +16,9 @@ var _inverse_mass: float = 0.0
 var _animation: AnimationPlayer = null
 @export var _health_point: int = 100
 # Trail on water
-var _trail: Line2D
+var _trail: Line2D = null
+var _trail_path: Array[Vector2]
+const MAX_TRAIL_PATH_SIZE: int = 100
 
 @onready var _engine := Vessel_engine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
 @onready var _weapons: Array[Weapon] = []
@@ -106,13 +108,23 @@ func _ready() -> void:
 				_weapons.append(weapon_slot.get_child(0))
 	_update_mass(BASE_MASS)
 	
-	var scene := preload("res://src/objects/vessel/animation.tscn")
-	
-	_animation = scene.instantiate()
+	var animation_scene := preload("res://src/objects/vessel/animation.tscn")
+	_animation = animation_scene.instantiate()
 	add_child(_animation)
+	
+	var trail_scene := preload("res://src/objects/vessel/trail.tscn")
+	_trail = trail_scene.instantiate()
+	add_child(_trail)
+	move_child(_trail, 0)
 
 func _process(_delta) -> void:
-	pass
+	_trail_path.push_front(global_position)
+	if _trail_path.size() > MAX_TRAIL_PATH_SIZE:
+		_trail_path.pop_back()
+	_trail.clear_points()
+
+	for point: Vector2 in _trail_path:
+		_trail.add_point(to_local(point))
 
 func _physics_process(_delta: float) -> void:
 	var applied_force := Vector2.ZERO

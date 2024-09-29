@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4q5lq140q2wc"]
+
+[sub_resource type="Gradient" id="Gradient_876av"]
+offsets = PackedFloat32Array(0.3379, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_biqf8"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fhjl"]
+gradient = SubResource("Gradient_biqf8")
+fill_to = Vector2(0, 1)
+
+[node name="trail" type="Line2D"]
+width = 18.0
+gradient = SubResource("Gradient_876av")
+texture = SubResource("GradientTexture2D_8fhjl")
+texture_mode = 1
