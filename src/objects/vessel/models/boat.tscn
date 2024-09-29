@@ -1,10 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://buk7uchvp6xab"]
+[gd_scene load_steps=10 format=3 uid="uid://buk7uchvp6xab"]
 
 [ext_resource type="Script" path="res://src/objects/vessel/vessel.gd" id="1_opm52"]
 [ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/objects/vessel/boat.png" id="2_krfwm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 friction = 0.35
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gaqs3"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_nvfg1"]
+offsets = PackedFloat32Array(0, 0.610526, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7q63v"]
+gradient = SubResource("Gradient_nvfg1")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.50641)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sokdn"]
 radius = 8.0
@@ -30,6 +48,18 @@ PROPELLER_DIAMETER = 0.4
 ANGULAR_ACCELERATION = 0.1
 BASE_MASS = 400.0
 icon = ExtResource("2_krfwm")
+
+[node name="trail1" type="GPUParticles2D" parent="."]
+position = Vector2(-7, 0)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_gaqs3")
+texture = SubResource("GradientTexture2D_7q63v")
+
+[node name="trail2" type="GPUParticles2D" parent="."]
+position = Vector2(7, 0)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_gaqs3")
+texture = SubResource("GradientTexture2D_7q63v")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)
