@@ -1,28 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://buk7uchvp6xab"]
+[gd_scene load_steps=14 format=3 uid="uid://buk7uchvp6xab"]
 
 [ext_resource type="Script" path="res://src/objects/vessel/vessel.gd" id="1_opm52"]
 [ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/objects/vessel/boat.png" id="2_krfwm"]
+[ext_resource type="Texture2D" uid="uid://ctncyamumgaet" path="res://assets/objects/vessel/wake_circle.png" id="4_p62mx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_757qy"]
 friction = 0.35
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gaqs3"]
-lifetime_randomness = 1.0
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_st41v"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_fonga"]
+colors = PackedColorArray(1, 0.937255, 1, 0.223529, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jkv2b"]
+gradient = SubResource("Gradient_fonga")
+
+[sub_resource type="Curve" id="Curve_wwkck"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 0, Vector2(1, 0.8), 1.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h1b8o"]
+curve = SubResource("Curve_wwkck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5lwen"]
 particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-
-[sub_resource type="Gradient" id="Gradient_nvfg1"]
-offsets = PackedFloat32Array(0, 0.610526, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7q63v"]
-gradient = SubResource("Gradient_nvfg1")
-width = 8
-height = 8
-fill = 1
-fill_from = Vector2(0.5, 0.50641)
-fill_to = Vector2(0, 0)
+scale_curve = SubResource("CurveTexture_h1b8o")
+color_ramp = SubResource("GradientTexture1D_jkv2b")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sokdn"]
 radius = 8.0
@@ -49,17 +55,12 @@ ANGULAR_ACCELERATION = 0.1
 BASE_MASS = 400.0
 icon = ExtResource("2_krfwm")
 
-[node name="trail1" type="GPUParticles2D" parent="."]
-position = Vector2(-7, 0)
-amount = 64
-process_material = SubResource("ParticleProcessMaterial_gaqs3")
-texture = SubResource("GradientTexture2D_7q63v")
-
-[node name="trail2" type="GPUParticles2D" parent="."]
-position = Vector2(7, 0)
-amount = 64
-process_material = SubResource("ParticleProcessMaterial_gaqs3")
-texture = SubResource("GradientTexture2D_7q63v")
+[node name="trail" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_st41v")
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_5lwen")
+texture = ExtResource("4_p62mx")
+visibility_rect = Rect2(-100, -100, 100, 100)
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2.38419e-07)
