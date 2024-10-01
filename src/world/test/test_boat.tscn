@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://byqu58sdee6bn"]
+[gd_scene load_steps=10 format=3 uid="uid://byqu58sdee6bn"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_bc54p"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
 [ext_resource type="PackedScene" uid="uid://drjgmrbgmn6lr" path="res://src/world/environment/daycycle.tscn" id="3_ohuau"]
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
-[ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_b0wr1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xl8"]
 
@@ -41,6 +40,7 @@ script = ExtResource("1_bc54p")
 environment = SubResource("Environment_h15rt")
 
 [node name="environment" type="Control" parent="."]
+z_index = -2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -57,28 +57,6 @@ scale = Vector2(3.95549, 1.84885)
 color = Color(0, 0, 0, 1)
 
 [node name="daycycle" parent="environment" instance=ExtResource("3_ohuau")]
-
-[node name="map" type="Node2D" parent="."]
-
-[node name="top" type="Sprite2D" parent="map"]
-position = Vector2(615, -123)
-scale = Vector2(55.375, 7.625)
-texture = ExtResource("4_b0wr1")
-
-[node name="left" type="Sprite2D" parent="map"]
-position = Vector2(-235, 374)
-scale = Vector2(14.6875, 41.8125)
-texture = ExtResource("4_b0wr1")
-
-[node name="right" type="Sprite2D" parent="map"]
-position = Vector2(1388, 374)
-scale = Vector2(14.6875, 41.8125)
-texture = ExtResource("4_b0wr1")
-
-[node name="bottom" type="Sprite2D" parent="map"]
-position = Vector2(616, 770)
-scale = Vector2(55.375, 7.625)
-texture = ExtResource("4_b0wr1")
 
 [node name="border" type="StaticBody2D" parent="."]
 collision_mask = 0
@@ -113,3 +91,5 @@ position = Vector2(407, 329)
 
 [node name="boat3" parent="." instance=ExtResource("3_wff5l")]
 position = Vector2(205, 382)
+
+[editable path="boat"]

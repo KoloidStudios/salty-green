@@ -13,12 +13,19 @@ class_name Vessel
 # Private Members
 var _speed       : float = 0.0
 var _inverse_mass: float = 0.0
-var _animation: AnimationPlayer = null
-@export var _health_point: int = 100
+var _weapons     : Array[Weapon] = []
 
 @onready var _engine := Vessel_engine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
-@onready var _weapons: Array[Weapon] = []
+
+@export var _health_point: int = 100
 @onready var _weapons_node: Node2D = find_child("weapons")
+@onready var _animation : AnimationPlayer = (
+	func() -> AnimationPlayer: 
+		var animation : AnimationPlayer = preload("res://src/objects/vessel/animation.tscn").instantiate()
+		add_child(animation)
+		return animation
+).call()
+@onready var _trail: GPUParticles2D = get_node("trail")
 
 # Public Members
 var linear_direction : int = 0
@@ -103,23 +110,21 @@ func _ready() -> void:
 			if weapon_slot.get_child_count() != 0:
 				_weapons.append(weapon_slot.get_child(0))
 	_update_mass(BASE_MASS)
-	
-	var animation_scene := preload("res://src/objects/vessel/animation.tscn")
-	_animation = animation_scene.instantiate()
-	add_child(_animation)
+
 
 func _physics_process(_delta: float) -> void:
-	var applied_force := Vector2.ZERO
-
-	if linear_direction:
-		applied_force = transform.y * _engine.get_thrust(linear_direction)
-	if angular_direction:
-		apply_torque(Utility.METER_TO_PIXEL * angular_direction * inertia * ANGULAR_ACCELERATION)
-
+	# Trail
+	_trail.emitting = _speed > 2 # m/s
+	
+	# Drag Force Util
 	_speed = Utility.PIXEL_TO_METER * linear_velocity.length() 
 	linear_damp = max(_calc_linear_damp(), 1)
-
-	apply_force(Utility.METER_TO_PIXEL * applied_force)
+	
+	if linear_direction:
+		var applied_force: Vector2 = transform.y * _engine.get_thrust(linear_direction)
+		apply_force(Utility.METER_TO_PIXEL * applied_force)
+	if angular_direction:
+		apply_torque(Utility.METER_TO_PIXEL * angular_direction * inertia * ANGULAR_ACCELERATION)
 
 # Debug Functions
 func debug_drag_force() -> float:

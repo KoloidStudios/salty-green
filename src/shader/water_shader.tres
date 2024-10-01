@@ -121,6 +121,7 @@ op_type = 2
 parameter_name = "FoamColour"
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_1s0qa"]
+output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
 op_type = 5
 
@@ -245,7 +246,7 @@ operator = 2
 operator = 2
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_jxckq"]
-size = Vector2(487, 190)
+size = Vector2(244, 417)
 title = "Specular highlights"
 attached_nodes = PackedInt32Array(108)
 
@@ -266,7 +267,7 @@ default_input_values = [0, 0.0, 1, 1.0]
 operator = 2
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_u7oaj"]
-size = Vector2(487, 190)
+size = Vector2(329, 252)
 title = "Get water (caustic) texture"
 attached_nodes = PackedInt32Array(41)
 
@@ -332,6 +333,7 @@ size = Vector2(1971.82, 1278.68)
 title = "Get noise to change opacity of texture to avoid repetition"
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_67j8j"]
+output_port_for_preview = 0
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
 op_type = 5
 
@@ -361,6 +363,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_smvde"]
+output_port_for_preview = 0
 parameter_name = "CausticTextureScale"
 default_value = 0.05
 
@@ -1068,6 +1071,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-2251.98, -272.304)
 mode = 1
 flags/light_only = false
 varyings/WorldPos = "0,3"

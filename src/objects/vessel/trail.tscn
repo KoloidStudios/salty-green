@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfta3gdgs6aby"]
+
+[ext_resource type="Texture2D" uid="uid://ctncyamumgaet" path="res://assets/objects/vessel/wake_circle.png" id="1_yft3j"]
+
+[sub_resource type="Gradient" id="Gradient_fonga"]
+colors = PackedColorArray(0.67, 0.8845, 1, 1, 0.7, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jkv2b"]
+gradient = SubResource("Gradient_fonga")
+
+[sub_resource type="Curve" id="Curve_wwkck"]
+_data = [Vector2(0, 0.15), 0.0, 0.35, 0, 1, Vector2(1, 0.5), 0.35, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h1b8o"]
+curve = SubResource("Curve_wwkck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5lwen"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_h1b8o")
+color_ramp = SubResource("GradientTexture1D_jkv2b")
+
+[node name="trail" type="GPUParticles2D"]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_5lwen")
+texture = ExtResource("1_yft3j")
+fixed_fps = 60
+visibility_rect = Rect2(-100, -100, 100, 100)
