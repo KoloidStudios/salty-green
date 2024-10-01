@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://byqu58sdee6bn"]
+[gd_scene load_steps=11 format=3 uid="uid://byqu58sdee6bn"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_bc54p"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
-[ext_resource type="PackedScene" uid="uid://drjgmrbgmn6lr" path="res://src/world/environment/daycycle.tscn" id="3_ohuau"]
+[ext_resource type="Script" path="res://src/world/environment/daycycle.gd" id="3_o6j4b"]
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://src/world/environment/daycycle_gradient.tres" id="4_yqjye"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xl8"]
 
@@ -46,17 +47,25 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="base" type="CanvasModulate" parent="environment"]
+color = Color(0, 0, 0, 1)
+
 [node name="sea" type="ColorRect" parent="environment"]
 material = ExtResource("2_ekula")
 layout_mode = 0
-offset_left = -7.0
+offset_left = -6.0
 offset_top = -3.0
-offset_right = 284.0
+offset_right = 285.0
 offset_bottom = 347.0
 scale = Vector2(3.95549, 1.84885)
 color = Color(0, 0, 0, 1)
 
-[node name="daycycle" parent="environment" instance=ExtResource("3_ohuau")]
+[node name="sun" type="DirectionalLight2D" parent="environment"]
+shadow_enabled = true
+height = 1.0
+max_distance = 2000.0
+script = ExtResource("3_o6j4b")
+gradient_texture = ExtResource("4_yqjye")
 
 [node name="border" type="StaticBody2D" parent="."]
 collision_mask = 0
@@ -91,5 +100,3 @@ position = Vector2(407, 329)
 
 [node name="boat3" parent="." instance=ExtResource("3_wff5l")]
 position = Vector2(205, 382)
-
-[editable path="boat"]

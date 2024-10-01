@@ -7,16 +7,16 @@
 
 [resource]
 shader = ExtResource("1_qm0vv")
-shader_parameter/WaterColour = Color(2.55093e-06, 0.468516, 0.604405, 1)
+shader_parameter/WaterColour = Color(6.73831e-06, 0.54799, 0.704508, 1)
+shader_parameter/NoiseScale = 0.01
+shader_parameter/NoiseModulateSpeed = 0.5
+shader_parameter/NoiseStrength = 0.25
 shader_parameter/CausticTextureScale = 0.008
 shader_parameter/CausticMovementScale = 64.0
 shader_parameter/CausticMovementSpeed = 0.9
 shader_parameter/CausticMovementStrength = 0.035
 shader_parameter/CausticColour = Color(0.298039, 0.960784, 0.917647, 0.443137)
 shader_parameter/CausticHighlightColour = Color(1.5, 1.5, 2, 1)
-shader_parameter/NoiseScale = 0.01
-shader_parameter/NoiseModulateSpeed = 0.5
-shader_parameter/NoiseStrength = 0.2
 shader_parameter/SpecularNoiseMovementStrength = 255.0
 shader_parameter/SpecularSpeed = 4.0
 shader_parameter/SpecularScale1 = 0.07
