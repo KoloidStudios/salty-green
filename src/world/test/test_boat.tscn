@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://byqu58sdee6bn"]
+[gd_scene load_steps=10 format=3 uid="uid://byqu58sdee6bn"]
 
-[ext_resource type="Script" path="res://src/world/world.gd" id="1_bc54p"]
+[ext_resource type="Script" path="res://src/world/static_world.gd" id="1_5cdev"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
 [ext_resource type="Script" path="res://src/world/environment/daycycle.gd" id="3_o6j4b"]
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://src/world/environment/daycycle_gradient.tres" id="4_yqjye"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xl8"]
 
 [sub_resource type="Environment" id="Environment_h15rt"]
 background_mode = 3
@@ -33,9 +31,8 @@ size = Vector2(1152, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_458ae"]
 size = Vector2(8, 648)
 
-[node name="test_boat" type="Node2D"]
-material = SubResource("ShaderMaterial_y5xl8")
-script = ExtResource("1_bc54p")
+[node name="test_boat" type="Node"]
+script = ExtResource("1_5cdev")
 
 [node name="we" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h15rt")

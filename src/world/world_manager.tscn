@@ -1,32 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvlskwkm5e64q"]
+[gd_scene load_steps=4 format=3 uid="uid://cvlskwkm5e64q"]
 
 [ext_resource type="Script" path="res://src/world/world_manager.gd" id="1_t21ax"]
-[ext_resource type="PackedScene" uid="uid://byqu58sdee6bn" path="res://src/world/test/test_boat.tscn" id="2_7yqh0"]
+[ext_resource type="PackedScene" uid="uid://duuddi8wh2sc7" path="res://src/world/test/test_dynamic_world.tscn" id="2_a3xbt"]
 [ext_resource type="PackedScene" uid="uid://bg4x5qkkdlr5" path="res://src/ui/debug_interface.tscn" id="4_g26pc"]
-[ext_resource type="Script" path="res://src/world/player.gd" id="4_qnbhs"]
 
 [node name="world_manager" type="Node2D"]
-position = Vector2(0, -1)
 script = ExtResource("1_t21ax")
-_debug_world_scene = ExtResource("2_7yqh0")
+_debug_world_scene = ExtResource("2_a3xbt")
 
 [node name="viewport_container" type="SubViewportContainer" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-stretch = true
+offset_right = 1024.0
+offset_bottom = 1024.0
 
 [node name="world_viewport" type="SubViewport" parent="viewport_container"]
 handle_input_locally = false
 use_hdr_2d = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(1280, 720)
+size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 
-[node name="camera" type="Camera2D" parent="."]
+[node name="move_camera" type="Camera2D" parent="viewport_container/world_viewport"]
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="player" type="Node2D" parent="."]
-script = ExtResource("4_qnbhs")
+[node name="zoom_camera" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="debug_interface" parent="." instance=ExtResource("4_g26pc")]

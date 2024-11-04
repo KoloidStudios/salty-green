@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnkbw8s0y0ria"]
+
+[ext_resource type="Script" path="res://src/world/world_tiles.gd" id="1_7l6ni"]
+[ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ee1p0"]
+[ext_resource type="Texture2D" uid="uid://b7gahpfaretk7" path="res://assets/world/basic_tiles.png" id="2_j4geb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0fxs"]
+texture = ExtResource("2_j4geb")
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_472uo"]
+sources/1 = SubResource("TileSetAtlasSource_q0fxs")
+
+[node name="world_tiles" type="Node2D"]
+script = ExtResource("1_7l6ni")
+
+[node name="layer0" type="TileMapLayer" parent="."]
+material = ExtResource("2_ee1p0")
+tile_set = SubResource("TileSet_472uo")
