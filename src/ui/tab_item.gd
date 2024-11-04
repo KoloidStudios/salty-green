@@ -1,5 +1,5 @@
 extends Control
-class_name Tab_item
+class_name TabItem
 
 var icon: Texture2D
 var label: String

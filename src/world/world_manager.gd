@@ -1,5 +1,5 @@
 extends Node2D
-class_name World_manager
+class_name WorldManager
 
 # Private members
 @export var _debug_world_scene: PackedScene
@@ -41,12 +41,12 @@ func _ready() -> void:
 	# Instantiate debug items
 	var tab_item_scene := preload("res://src/ui/tab_item.tscn")
 	for vessel: Vessel in Modules.vessels:
-		var tab_item: Tab_item = tab_item_scene.instantiate()
+		var tab_item: TabItem = tab_item_scene.instantiate()
 		tab_item.icon = vessel.icon
 		tab_item.label = vessel.name
 		$debug_interface/modules_list/vessels.add_child(tab_item)
 	for weapon: Weapon in Modules.weapons:
-		var tab_item: Tab_item = tab_item_scene.instantiate()
+		var tab_item: TabItem = tab_item_scene.instantiate()
 		tab_item.icon = weapon.icon
 		tab_item.label = weapon.name
 		$debug_interface/modules_list/weapons.add_child(tab_item)

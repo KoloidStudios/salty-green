@@ -1,5 +1,5 @@
 extends Area2D
-class_name Weapon_projectile
+class_name WeaponProjectile
 
 @export var _speed: float = 100.0
 @export var _damage: float = 10.0

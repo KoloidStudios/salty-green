@@ -1,4 +1,4 @@
-class_name Vessel_engine
+class_name VesselEngine
 
 var _engine_power: float = 0.0#KW
 var _engine_thrust: float = 0.0#N
