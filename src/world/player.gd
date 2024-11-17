@@ -4,27 +4,23 @@ class_name Player
 const CAMERA_SCROLL_SPEED: float = 200.0
 
 # Public Members
-var zoom_camera: Camera2D
-var move_camera: Camera2D
-
-var world: World = null :
-	set(value):
-		raycast = RayCast2D.new()
-		raycast.target_position = Vector2(0.0, 0.0)
-		raycast.hit_from_inside = true
-		value.add_child(raycast)
+@export var zoom_camera: Camera2D
+@export var move_camera: Camera2D
 
 # Controlled vessel
 var vessel: Vessel = null
 var raycast: RayCast2D = null
 var hovered_object: Node2D = null
 
+func inject_player(world: World) -> void:
+	raycast = RayCast2D.new()
+	raycast.target_position = Vector2(0.0, 0.0)
+	raycast.hit_from_inside = true
+	world.add_child(raycast)
+	world.player = self
+
 func update_zoom(amount: float):
 	zoom_camera.zoom += Vector2(amount, amount)
-
-func _init(zc: Camera2D, mc: Camera2D) -> void:
-	zoom_camera = zc
-	move_camera = mc
 
 # A bit hardcoding, will fix later
 func _input(event: InputEvent) -> void:
@@ -86,3 +82,4 @@ func _physics_process(_delta: float) -> void:
 		move_camera.offset.x += horz_axis * _delta * CAMERA_SCROLL_SPEED
 		move_camera.offset.y += -vert_axis * _delta * CAMERA_SCROLL_SPEED
 		
+	position = move_camera.offset

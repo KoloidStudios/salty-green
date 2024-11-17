@@ -13,7 +13,7 @@ func rotate_to(target: Vector2) -> void:
 func fire(target: Vector2) -> void:
 	if (global_position - target).length() < fire_point.length():
 		return
-	var object: Weapon_projectile = projectile.instantiate()
+	var object: WeaponProjectile = projectile.instantiate()
 	object.target = target
 	object.position = global_position + fire_point.rotated(global_rotation + get_angle_to(target)) 
 	object.add_to_group(get_groups()[0])

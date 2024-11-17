@@ -15,7 +15,7 @@ var _speed       : float = 0.0
 var _inverse_mass: float = 0.0
 var _weapons     : Array[Weapon] = []
 
-@onready var _engine := Vessel_engine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
+@onready var _engine := VesselEngine.new(PROPELLER_DIAMETER, ENGINE_POWER, 0.4)
 
 @export var _health_point: int = 100
 @onready var _weapons_node: Node2D = find_child("weapons")
