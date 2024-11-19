@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvlskwkm5e64q"]
+[gd_scene load_steps=6 format=3 uid="uid://cvlskwkm5e64q"]
 
 [ext_resource type="Script" path="res://src/world/world_manager.gd" id="1_t21ax"]
 [ext_resource type="PackedScene" uid="uid://duuddi8wh2sc7" path="res://src/world/test/test_dynamic_world.tscn" id="2_a3xbt"]
 [ext_resource type="Script" path="res://src/world/player.gd" id="3_g3vq6"]
+[ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_5ik3k"]
 [ext_resource type="PackedScene" uid="uid://bg4x5qkkdlr5" path="res://src/ui/debug_interface.tscn" id="4_g26pc"]
 
 [node name="world_manager" type="Node2D" node_paths=PackedStringArray("_viewport", "_player")]
 script = ExtResource("1_t21ax")
 _debug_world_scene = ExtResource("2_a3xbt")
 _viewport = NodePath("viewport_container/world_viewport")
-_player = NodePath("player")
+_player = NodePath("viewport_container/world_viewport/player")
 
 [node name="viewport_container" type="SubViewportContainer" parent="."]
 offset_right = 1024.0
@@ -22,6 +23,15 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 
+[node name="player" type="Node2D" parent="viewport_container/world_viewport" node_paths=PackedStringArray("zoom_camera", "move_camera")]
+script = ExtResource("3_g3vq6")
+zoom_camera = NodePath("../../../zoom_camera")
+move_camera = NodePath("../move_camera")
+
+[node name="sprite" type="Sprite2D" parent="viewport_container/world_viewport/player"]
+z_index = 3
+texture = ExtResource("4_5ik3k")
+
 [node name="move_camera" type="Camera2D" parent="viewport_container/world_viewport"]
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -29,10 +39,5 @@ position_smoothing_enabled = true
 [node name="zoom_camera" type="Camera2D" parent="."]
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="player" type="Node2D" parent="." node_paths=PackedStringArray("zoom_camera", "move_camera")]
-script = ExtResource("3_g3vq6")
-zoom_camera = NodePath("../zoom_camera")
-move_camera = NodePath("../viewport_container/world_viewport/move_camera")
 
 [node name="debug_interface" parent="." instance=ExtResource("4_g26pc")]

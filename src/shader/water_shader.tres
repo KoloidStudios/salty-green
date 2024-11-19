@@ -248,7 +248,7 @@ operator = 2
 operator = 2
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_jxckq"]
-size = Vector2(366, 611)
+size = Vector2(365, 158)
 title = "Specular highlights"
 attached_nodes = PackedInt32Array(108)
 
@@ -291,7 +291,7 @@ default_input_values = [0, true, 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0, 0, 
 op_type = 5
 
 [sub_resource type="VisualShaderNodeComment" id="VisualShaderNodeComment_u7oaj"]
-size = Vector2(441, 361)
+size = Vector2(365, 158)
 title = "Get water (caustic) texture"
 attached_nodes = PackedInt32Array(41)
 
