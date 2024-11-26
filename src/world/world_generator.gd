@@ -9,7 +9,7 @@ func _init(seed: int) -> void:
 	noise.noise_type = FastNoiseLite.TYPE_PERLIN
 	noise.seed = seed
 
-func generate_chunk(position: Vector2) -> World.Chunk:
+func get_chunk(position: Vector2) -> World.Chunk:
 	var chunk := World.Chunk.new();
 	chunk.position = position
 	for y: int in range(World.Chunk.SIZE):
