@@ -7,13 +7,20 @@ const CAMERA_SCROLL_SPEED: float = 200.0
 @export var zoom_camera: Camera2D
 @export var move_camera: Camera2D
 
+signal vessel_entered()
+signal vessel_exited()
+
 # Controlled vessel
-var vessel: Vessel = null
-var raycast: RayCast2D = null
+var vessel: Vessel = null :
+	set(value):
+		if value != null:
+			emit_signal("vessel_entered")
+		else: emit_signal("vessel_exited")
+		vessel = value
+var raycast: RayCast2D = RayCast2D.new()
 var hovered_object: Node2D = null
 
 func inject_player(world: World) -> void:
-	raycast = RayCast2D.new()
 	raycast.target_position = Vector2(0.0, 0.0)
 	raycast.hit_from_inside = true
 	world.add_child(raycast)
@@ -28,9 +35,9 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_WHEEL_UP:
-					if zoom_camera.zoom.x <= 4.0: update_zoom(0.1)
+					if zoom_camera.zoom.x < 3.9: update_zoom(0.1)
 				MOUSE_BUTTON_WHEEL_DOWN:
-					if zoom_camera.zoom.x >= 1.0: update_zoom(-0.1)
+					if zoom_camera.zoom.x > 1.1: update_zoom(-0.1)
 				MOUSE_BUTTON_MASK_LEFT:
 					if event.ctrl_pressed:
 						if raycast.is_colliding():
@@ -65,6 +72,11 @@ func _input(event: InputEvent) -> void:
 					if hovered_object != null:
 						hovered_object.get_animation().stop()
 						hovered_object = null
+
+func _ready() -> void:
+	connect("vessel_entered", func() -> void: move_camera.position_smoothing_enabled = true)
+	connect("vessel_exited", func() -> void: move_camera.position_smoothing_enabled = false)
+
 func _process(_delta: float) -> void:
 	raycast.global_position = get_global_mouse_position()
 
@@ -75,11 +87,11 @@ func _physics_process(_delta: float) -> void:
 	var horz_axis: float = Input.get_axis("left", "right")
 	
 	if vessel != null:
-		move_camera.offset = vessel.position
+		move_camera.position = vessel.position
 		vessel.linear_direction = int(vert_axis)
 		vessel.angular_direction = int(horz_axis)
 	else: #observer mode
-		move_camera.offset.x += horz_axis * _delta * CAMERA_SCROLL_SPEED
-		move_camera.offset.y += -vert_axis * _delta * CAMERA_SCROLL_SPEED
+		move_camera.position.x += horz_axis * _delta * CAMERA_SCROLL_SPEED
+		move_camera.position.y += -vert_axis * _delta * CAMERA_SCROLL_SPEED
 		
-	position = move_camera.offset
+	position = move_camera.position

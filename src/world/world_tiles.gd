@@ -40,7 +40,6 @@ func erase_chunk(chunk: World.Chunk) -> void:
 			_layers[0].erase_cell(cell_pos)
 
 func update() -> void:
-	print(_remove_pool.size(), " ", _add_pool.size(), " ", _chunks.size())
 	# Cache invalidation is a hard thing in programming.
 	# So i separate this loop
 	for chunk: World.Chunk in _remove_pool:

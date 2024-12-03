@@ -10,5 +10,9 @@ func _ready() -> void:
 	$vertical/label.text = label
 
 func _get_drag_data(at_position: Vector2) -> Variant:
-	set_drag_preview($vertical/icon)
-	return true
+	var texture = TextureRect.new()
+	texture.expand = true
+	texture.texture = icon
+	texture.size = Vector2(64, 64)
+	set_drag_preview(texture)
+	return data

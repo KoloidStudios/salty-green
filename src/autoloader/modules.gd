@@ -15,7 +15,7 @@ func load_module(path: String, type: String, list: Array[Variant]) -> void:
 			print("Opening Success")
 			list.append(object)
 		else:
-			print("Can't open as ", type, " for type: ", object.get_class())
+			print("Can't open as ", type, " for type: ", object.get_script().get_global_name())
 func _ready() -> void:
 	print("Loading modules")
 	load_module("res://src/objects/vessel/models/", "Vessel", vessels)

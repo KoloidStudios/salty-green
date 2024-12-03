@@ -9,7 +9,7 @@ var _generator := WorldGenerator.new(seed)
 var _chunk_update := false
 var _is_terminating := false
 var _last_chunk_position := Vector2i.ZERO
-const RENDER_DISTANCE = 2#chunks
+const RENDER_DISTANCE = 3#chunks
 
 func _ready() -> void:
 	super._ready()
@@ -23,7 +23,6 @@ func _generate_chunks() -> void:
 		_mutex.lock()
 		var chunks := _tiles.get_chunks()
 		var current_chunk_pos := _last_chunk_position
-		print(current_chunk_pos)
 
 		for chunk: Chunk in chunks:
 			var difference: Vector2i = (chunk.position - _last_chunk_position) / Chunk.SIZE
@@ -49,7 +48,6 @@ func _get_chunk_position(player_position: Vector2) -> Vector2i:
 func _process(_delta: float) -> void:
 	var _current_chunk_position := _get_chunk_position(player.position)
 	if _last_chunk_position != _current_chunk_position:
-		print(_current_chunk_position, player.position)
 		_last_chunk_position = _current_chunk_position
 		_semaphore.post()
 	if _chunk_update:
