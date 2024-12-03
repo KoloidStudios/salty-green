@@ -6,6 +6,7 @@ const CAMERA_SCROLL_SPEED: float = 200.0
 # Public Members
 @export var zoom_camera: Camera2D
 @export var move_camera: Camera2D
+@export var cursor: TextureRect
 
 signal vessel_entered()
 signal vessel_exited()
@@ -73,9 +74,13 @@ func _input(event: InputEvent) -> void:
 						hovered_object.get_animation().stop()
 						hovered_object = null
 
-func _ready() -> void:
-	connect("vessel_entered", func() -> void: move_camera.position_smoothing_enabled = true)
-	connect("vessel_exited", func() -> void: move_camera.position_smoothing_enabled = false)
+func _on_vessel_entered() -> void:
+	move_camera.position_smoothing_enabled = true
+	cursor.visible = false
+
+func _on_vessel_exited() -> void:
+	move_camera.position_smoothing_enabled = false
+	cursor.visible = true
 
 func _process(_delta: float) -> void:
 	raycast.global_position = get_global_mouse_position()

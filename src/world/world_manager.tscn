@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://src/world/world_manager.gd" id="1_t21ax"]
 [ext_resource type="PackedScene" uid="uid://duuddi8wh2sc7" path="res://src/world/test/test_dynamic_world.tscn" id="2_a3xbt"]
 [ext_resource type="Script" path="res://src/world/player.gd" id="3_g3vq6"]
-[ext_resource type="Texture2D" uid="uid://cyn1eyq08elv8" path="res://assets/test/bg_32px.png" id="4_5ik3k"]
 [ext_resource type="PackedScene" uid="uid://bg4x5qkkdlr5" path="res://src/ui/debug_interface.tscn" id="4_g26pc"]
+[ext_resource type="Texture2D" uid="uid://bqp85eol0g42e" path="res://assets/center_cursor.png" id="4_nbcni"]
 
 [sub_resource type="GDScript" id="GDScript_klv35"]
 script/source = "extends SubViewportContainer
@@ -43,20 +43,44 @@ render_target_update_mode = 4
 [node name="move_camera" type="Camera2D" parent="viewport_container/world_viewport"]
 limit_smoothed = true
 
-[node name="player" type="Node2D" parent="viewport_container/world_viewport" node_paths=PackedStringArray("zoom_camera", "move_camera")]
+[node name="player" type="Node2D" parent="viewport_container/world_viewport" node_paths=PackedStringArray("zoom_camera", "move_camera", "cursor")]
 script = ExtResource("3_g3vq6")
 zoom_camera = NodePath("../../../zoom_camera")
 move_camera = NodePath("../move_camera")
-
-[node name="sprite" type="Sprite2D" parent="viewport_container/world_viewport/player"]
-z_index = 3
-texture = ExtResource("4_5ik3k")
+cursor = NodePath("../../../interface/cursor")
 
 [node name="zoom_camera" type="Camera2D" parent="."]
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="interface" type="CanvasLayer" parent="."]
+
+[node name="cursor" type="TextureRect" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("4_nbcni")
+
 [node name="debug_interface" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_g26pc")]
+layer = 2
 player = NodePath("../viewport_container/world_viewport/player")
+
+[node name="modules_list" parent="debug_interface" index="1"]
+anchors_preset = -1
+tab_alignment = 1
+
+[connection signal="vessel_entered" from="viewport_container/world_viewport/player" to="viewport_container/world_viewport/player" method="_on_vessel_entered"]
+[connection signal="vessel_exited" from="viewport_container/world_viewport/player" to="viewport_container/world_viewport/player" method="_on_vessel_exited"]
 
 [editable path="debug_interface"]
