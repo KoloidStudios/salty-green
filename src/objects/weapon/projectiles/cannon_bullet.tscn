@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://duvjserim5ufa"]
 
-[ext_resource type="Script" path="res://src/objects/weapon/weapon_projectile.gd" id="1_6ensk"]
+[ext_resource type="Script" uid="uid://ce65trl0encmt" path="res://src/objects/weapon/weapon_projectile.gd" id="1_6ensk"]
 [ext_resource type="Texture2D" uid="uid://bpupqw4upaee5" path="res://assets/objects/weapon/projectiles/cannon.png" id="2_ef1yd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1nqi"]

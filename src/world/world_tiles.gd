@@ -10,6 +10,11 @@ var _remove_pool: Array[World.Chunk]
 func _ready() -> void:
 	_layers.append($layer0)
 
+func is_water(entity_position: Vector2i) -> bool:
+	var cell_position := _layers[0].local_to_map(entity_position)
+	var atlas_coords := _layers[0].get_cell_atlas_coords(cell_position)
+	return atlas_coords == Vector2i.ZERO
+
 func has_chunk(chunk_position: Vector2i) -> bool:
 	for chunk: World.Chunk in _chunks:
 		if chunk.position == chunk_position:
@@ -30,7 +35,7 @@ func apply_chunk(chunk: World.Chunk) -> void:
 		for x: int in range(World.Chunk.SIZE):
 			var data_pos := Vector2i(x, y)
 			var cell_pos := data_pos + chunk.position
-			_layers[0].set_cell(cell_pos, 1, Vector2(chunk.get_value(data_pos), 0))
+			_layers[0].set_cell(cell_pos, 1, Vector2i(chunk.get_value(data_pos), 0))
 
 func erase_chunk(chunk: World.Chunk) -> void:
 	for y: int in range(World.Chunk.SIZE):

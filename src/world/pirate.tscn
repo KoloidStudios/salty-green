@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfw58ke1i25qw"]
+
+[ext_resource type="Script" uid="uid://byxe4dbjnmbt8" path="res://src/world/pirate.gd" id="1_hsaps"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hsaps"]
+radius = 100.0
+
+[node name="pirate" type="Node2D" node_paths=PackedStringArray("area", "despawn_timer")]
+script = ExtResource("1_hsaps")
+area = NodePath("area")
+despawn_timer = NodePath("despawn_timer")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_hsaps")
+
+[node name="navigation" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="despawn_timer" type="Timer" parent="."]

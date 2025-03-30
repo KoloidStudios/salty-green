@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://byqu58sdee6bn"]
 
-[ext_resource type="Script" path="res://src/world/static_world.gd" id="1_5cdev"]
+[ext_resource type="Script" uid="uid://bplmicuoi00du" path="res://src/world/static_world.gd" id="1_5cdev"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ekula"]
-[ext_resource type="Script" path="res://src/world/environment/daycycle.gd" id="3_o6j4b"]
+[ext_resource type="Script" uid="uid://espexw6esa15" path="res://src/world/environment/daycycle.gd" id="3_o6j4b"]
 [ext_resource type="PackedScene" uid="uid://buk7uchvp6xab" path="res://src/objects/vessel/models/boat.tscn" id="3_wff5l"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://src/world/environment/daycycle_gradient.tres" id="4_yqjye"]
 

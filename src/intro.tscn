@@ -176,7 +176,7 @@ resource_name = "intro"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxan8"]
 _data = {
-"intro": SubResource("Animation_l3tmv")
+&"intro": SubResource("Animation_l3tmv")
 }
 
 [node name="intro" type="Node"]

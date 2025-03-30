@@ -26,10 +26,3 @@ func _ready() -> void:
 	
 	if OS.is_debug_build():
 		world = _debug_world_scene.instantiate()
-
-func spawn_vessel(at_position: Vector2, vessel: Vessel) -> void:
-	vessel.position = at_position
-	world.add_child(vessel)
-
-func spawn_vessel_at_mouse_position(vessel: Vessel) -> void:
-	spawn_vessel(_viewport.get_camera_2d().get_global_mouse_position(), vessel)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://uf3otym6vcdc"]
 
-[ext_resource type="Script" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
-[ext_resource type="Script" path="res://src/ui/audio.gd" id="2_wd0oq"]
+[ext_resource type="Script" uid="uid://cvbmo3qql7rij" path="res://src/ui/ui_menu.gd" id="1_dfvad"]
+[ext_resource type="Script" uid="uid://crc1f7r8umwl1" path="res://src/ui/audio.gd" id="2_wd0oq"]
 
 [sub_resource type="Animation" id="Animation_xls8m"]
 length = 0.001
@@ -500,10 +500,10 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kq0dt"]
 _data = {
-"RESET": SubResource("Animation_xls8m"),
-"options_pressed": SubResource("Animation_q5drn"),
-"play_pressed": SubResource("Animation_x5j14"),
-"start": SubResource("Animation_0ivtk")
+&"RESET": SubResource("Animation_xls8m"),
+&"options_pressed": SubResource("Animation_q5drn"),
+&"play_pressed": SubResource("Animation_x5j14"),
+&"start": SubResource("Animation_0ivtk")
 }
 
 [node name="ui_menu" type="Control"]

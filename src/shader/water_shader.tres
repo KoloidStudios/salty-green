@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=120 format=3 uid="uid://c25wx8oihvkgw"]
 
-[ext_resource type="Script" path="res://src/shader/water_shader_noise.gd" id="1_vmh8j"]
+[ext_resource type="Script" uid="uid://b50qn2jl1htu3" path="res://src/shader/water_shader_noise.gd" id="1_vmh8j"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_l7mpf"]
 output_port_for_preview = 0
@@ -489,11 +489,11 @@ uniform float SpecularScale2;
 uniform float SpecularThreshold;
 uniform vec4 SpecularColour : source_color;
 uniform vec4 FoamColour : source_color;
-uniform float WaveSpeed = 5;
-uniform float FoamNoiseScale = 0;
+uniform float WaveSpeed = 5.0;
+uniform float FoamNoiseScale = 0.0;
 uniform sampler2D FoamNoiseTexture : source_color, filter_nearest, repeat_enable;
-uniform float FoamNoiseAmount = 1;
-uniform float FoamFrequency = 30;
+uniform float FoamNoiseAmount = 1.0;
+uniform float FoamFrequency = 30.0;
 uniform float FoamQuantizeAmount = 4.5;
 
 

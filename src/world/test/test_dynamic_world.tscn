@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://duuddi8wh2sc7"]
+[gd_scene load_steps=2 format=3 uid="uid://d3x8nfby6bl6a"]
 
-[ext_resource type="Script" path="res://src/world/dynamic_world.gd" id="1_i0uhy"]
+[ext_resource type="Script" uid="uid://ca1u7mvaonlk0" path="res://src/world/dynamic_world.gd" id="1_i0uhy"]
 
 [node name="test_dynamic_world" type="Node"]
 script = ExtResource("1_i0uhy")

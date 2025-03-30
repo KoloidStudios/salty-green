@@ -38,11 +38,11 @@ func _generate_chunks() -> void:
 		_chunk_update = true
 		_mutex.unlock()
 
-func _get_chunk_position(player_position: Vector2) -> Vector2i:
+func _get_chunk_position(entity_position: Vector2) -> Vector2i:
 	const CHUNK_PIXEL_SIZE: int = Chunk.SIZE * WorldTiles.TILE_SIZE
 	return Vector2i( \
-		Chunk.SIZE * (int(player.position.x) / (CHUNK_PIXEL_SIZE) - (1 if player.position.x < 0.0 else 0)), \
-		Chunk.SIZE * (int(player.position.y) / (CHUNK_PIXEL_SIZE) - (1 if player.position.y < 0.0 else 0)) \
+		Chunk.SIZE * (int(entity_position.x) / (CHUNK_PIXEL_SIZE) - (1 if entity_position.x < 0.0 else 0)), \
+		Chunk.SIZE * (int(entity_position.y) / (CHUNK_PIXEL_SIZE) - (1 if entity_position.y < 0.0 else 0)) \
 	)
 
 func _process(_delta: float) -> void:

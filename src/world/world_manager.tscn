@@ -1,37 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvlskwkm5e64q"]
+[gd_scene load_steps=8 format=3 uid="uid://cvlskwkm5e64q"]
 
-[ext_resource type="Script" path="res://src/world/world_manager.gd" id="1_t21ax"]
-[ext_resource type="PackedScene" uid="uid://duuddi8wh2sc7" path="res://src/world/test/test_dynamic_world.tscn" id="2_a3xbt"]
-[ext_resource type="Script" path="res://src/world/player.gd" id="3_g3vq6"]
+[ext_resource type="Script" uid="uid://b6i2lm1ly4ely" path="res://src/world/world_manager.gd" id="1_t21ax"]
+[ext_resource type="Script" uid="uid://ca1u7mvaonlk0" path="res://src/world/dynamic_world.gd" id="2_gnl5f"]
+[ext_resource type="Script" uid="uid://bgbp1cfk301u2" path="res://src/world/player.gd" id="3_g3vq6"]
 [ext_resource type="PackedScene" uid="uid://bg4x5qkkdlr5" path="res://src/ui/debug_interface.tscn" id="4_g26pc"]
 [ext_resource type="Texture2D" uid="uid://bqp85eol0g42e" path="res://assets/center_cursor.png" id="4_nbcni"]
+
+[sub_resource type="PackedScene" id="PackedScene_7dh4k"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("test_dynamic_world", "Node", "script", "seed"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0),
+"variants": [ExtResource("2_gnl5f"), 1756274893],
+"version": 3
+}
 
 [sub_resource type="GDScript" id="GDScript_klv35"]
 script/source = "extends SubViewportContainer
 
 @export var world_manager: WorldManager
+@export var viewport: Viewport
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	if data is Vessel: return true
-	return false
+	return data is Vessel
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	if data is Vessel:
 		var new_vessel = (data as Vessel).duplicate()
-		world_manager.spawn_vessel_at_mouse_position(new_vessel)
+		world_manager.world.spawn_vessel(viewport.get_camera_2d().get_global_mouse_position(), new_vessel)
 "
 
 [node name="world_manager" type="Node2D" node_paths=PackedStringArray("_viewport", "_player")]
 script = ExtResource("1_t21ax")
-_debug_world_scene = ExtResource("2_a3xbt")
+_debug_world_scene = SubResource("PackedScene_7dh4k")
 _viewport = NodePath("viewport_container/world_viewport")
 _player = NodePath("viewport_container/world_viewport/player")
 
-[node name="viewport_container" type="SubViewportContainer" parent="." node_paths=PackedStringArray("world_manager")]
+[node name="viewport_container" type="SubViewportContainer" parent="." node_paths=PackedStringArray("world_manager", "viewport")]
 offset_right = 1024.0
 offset_bottom = 1024.0
+mouse_target = true
 script = SubResource("GDScript_klv35")
 world_manager = NodePath("..")
+viewport = NodePath("world_viewport")
 
 [node name="world_viewport" type="SubViewport" parent="viewport_container"]
 handle_input_locally = false

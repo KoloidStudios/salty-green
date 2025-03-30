@@ -7,9 +7,9 @@ var _is_debug := OS.is_debug_build() :
 		_is_debug = value
 		self.visible = value
 
-func _fill_tab(tab_bar: TabBar, items: Array) -> void:
+func _fill_tab(tab_bar: TabBar, items: Dictionary) -> void:
 	var tab_item_scene := preload("res://src/ui/tab_item.tscn")
-	for item in items:
+	for item in items.values():
 		var tab_item: TabItem = tab_item_scene.instantiate()
 		tab_item.icon = item.icon
 		tab_item.label = item.name

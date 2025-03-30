@@ -30,6 +30,9 @@ var _weapons     : Array[Weapon] = []
 # Public Members
 var linear_direction : int = 0
 var angular_direction: int = 0
+var is_controlled: bool = false
+var group_id: int = 0
+
 # Module purpose
 @export var icon: Texture2D
 
@@ -60,6 +63,9 @@ func add_mass(m: float) -> void:
 func remove_mass(m: float) -> void:
 	var new_mass := mass - m
 	_update_mass(new_mass)
+
+func is_hostile_to(target: Vessel) -> bool:
+	return self.group_id != target.group_id
 
 func change_weapon(weapon: Weapon, index: int) -> void:
 	assert(index < _weapons_node.get_child_count())

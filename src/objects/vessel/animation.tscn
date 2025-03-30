@@ -34,8 +34,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggist"]
 _data = {
-"RESET": SubResource("Animation_7u6cr"),
-"blink": SubResource("Animation_i41ko")
+&"RESET": SubResource("Animation_7u6cr"),
+&"blink": SubResource("Animation_i41ko")
 }
 
 [node name="animation" type="AnimationPlayer"]

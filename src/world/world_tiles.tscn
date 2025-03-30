@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnkbw8s0y0ria"]
 
-[ext_resource type="Script" path="res://src/world/world_tiles.gd" id="1_7l6ni"]
+[ext_resource type="Script" uid="uid://cubnagrf1vue4" path="res://src/world/world_tiles.gd" id="1_7l6ni"]
 [ext_resource type="Material" uid="uid://cgjocunkt7lim" path="res://src/shader/water_material.tres" id="2_ee1p0"]
 [ext_resource type="Texture2D" uid="uid://b7gahpfaretk7" path="res://assets/world/basic_tiles.png" id="2_j4geb"]
 

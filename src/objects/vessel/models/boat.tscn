@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://buk7uchvp6xab"]
 
-[ext_resource type="Script" path="res://src/objects/vessel/vessel.gd" id="1_opm52"]
+[ext_resource type="Script" uid="uid://yggd8r3kjb84" path="res://src/objects/vessel/vessel.gd" id="1_opm52"]
 [ext_resource type="Texture2D" uid="uid://cbkska15msbm2" path="res://assets/objects/vessel/boat_shadow.png" id="2_jdtkv"]
 [ext_resource type="Texture2D" uid="uid://dra83214ydfbt" path="res://assets/objects/vessel/boat.png" id="2_krfwm"]
 [ext_resource type="PackedScene" uid="uid://bfta3gdgs6aby" path="res://src/objects/vessel/trail.tscn" id="3_on6fy"]

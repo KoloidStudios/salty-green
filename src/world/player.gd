@@ -8,15 +8,17 @@ const CAMERA_SCROLL_SPEED: float = 200.0
 @export var move_camera: Camera2D
 @export var cursor: TextureRect
 
-signal vessel_entered()
-signal vessel_exited()
+signal vessel_entered(in_vessel: Vessel)
+signal vessel_exited(out_vessel: Vessel)
 
 # Controlled vessel
 var vessel: Vessel = null :
 	set(value):
 		if value != null:
-			emit_signal("vessel_entered")
-		else: emit_signal("vessel_exited")
+			emit_signal("vessel_entered", value)
+		elif vessel != null: 
+			emit_signal("vessel_exited", vessel)
+		else: assert(false)
 		vessel = value
 var raycast: RayCast2D = RayCast2D.new()
 var hovered_object: Node2D = null
@@ -43,7 +45,7 @@ func _input(event: InputEvent) -> void:
 					if event.ctrl_pressed:
 						if raycast.is_colliding():
 							var clicked_object = raycast.get_collider()
-							if clicked_object is Vessel:
+							if clicked_object is Vessel and !(clicked_object as Vessel).is_controlled:
 								vessel = clicked_object
 					elif vessel != null:
 						var mouse_position := get_viewport().get_mouse_position()
@@ -65,7 +67,7 @@ func _input(event: InputEvent) -> void:
 			KEY_CTRL:
 				if event.pressed:
 					hovered_object = raycast.get_collider()
-					if hovered_object is Vessel and hovered_object != vessel:
+					if hovered_object is Vessel and hovered_object != vessel and !(hovered_object as Vessel).is_controlled:
 						# TODO: Change this with shader soon
 						# (using animation is somewhat an overhead, shader is more perfomance friendly)
 						hovered_object.get_animation().play("blink")
@@ -74,13 +76,15 @@ func _input(event: InputEvent) -> void:
 						hovered_object.get_animation().stop()
 						hovered_object = null
 
-func _on_vessel_entered() -> void:
+func _on_vessel_entered(in_vessel: Vessel) -> void:
 	move_camera.position_smoothing_enabled = true
 	cursor.visible = false
+	in_vessel.is_controlled = true
 
-func _on_vessel_exited() -> void:
+func _on_vessel_exited(out_vessel: Vessel) -> void:
 	move_camera.position_smoothing_enabled = false
 	cursor.visible = true
+	out_vessel.is_controlled = false
 
 func _process(_delta: float) -> void:
 	raycast.global_position = get_global_mouse_position()
