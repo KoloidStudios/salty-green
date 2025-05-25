@@ -56,10 +56,9 @@ func _input(event: InputEvent) -> void:
 			var mouse_position := get_viewport().get_mouse_position()
 			for weapon: Weapon in vessel.get_weapons():
 				weapon.rotate_to(mouse_position)
-		if !raycast.is_colliding():
-			if hovered_object != null:
-				hovered_object.get_animation().stop()
-				hovered_object = null
+		if hovered_object != null and !raycast.is_colliding():
+			hovered_object.get_animation().stop()
+			hovered_object = null
 	elif event is InputEventKey:
 		match event.keycode:
 			KEY_X:

@@ -519,7 +519,7 @@ script = ExtResource("1_dfvad")
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kq0dt")
+&"": SubResource("AnimationLibrary_kq0dt")
 }
 autoplay = "start"
 

@@ -5,10 +5,10 @@ class Chunk:
 	const SIZE: int = 32 #32x32 tiles per chunk
 	var data: PackedByteArray
 	var position: Vector2i
-	func set_value(pos: Vector2i, value: int) -> void:
-		data[pos.y * SIZE + pos.x] = value
-	func get_value(pos: Vector2i) -> int:
-		return data[pos.y * SIZE + pos.x]
+	func set_value(cell_pos: Vector2i, value: int) -> void:
+		data[cell_pos.y * SIZE + cell_pos.x] = value
+	func get_value(cell_pos: Vector2i) -> int:
+		return data[cell_pos.y * SIZE + cell_pos.x]
 	func _init() -> void:
 		data.resize(SIZE * SIZE)
 
@@ -23,6 +23,21 @@ func _ready() -> void:
 	add_child(_timer)
 	_timer.start(15.0)
 	_timer.connect("timeout", _spawn_pirate)
+
+
+static func get_chunk_position(real_position: Vector2) -> Vector2i:
+	const CHUNK_PIXEL_SIZE: int = Chunk.SIZE * WorldTiles.TILE_SIZE
+	return Vector2i( \
+		(int(real_position.x) / (CHUNK_PIXEL_SIZE) - (1 if real_position.x < 0.0 else 0)), \
+		(int(real_position.y) / (CHUNK_PIXEL_SIZE) - (1 if real_position.y < 0.0 else 0)) \
+	)
+
+static func get_cell_position(real_position: Vector2) -> Vector2i:
+	const CELL_PIXEL_SIZE: int = WorldTiles.TILE_SIZE
+	return Vector2i( \
+		(int(real_position.x) / (CELL_PIXEL_SIZE) - (1 if real_position.x < 0.0 else 0)), \
+		(int(real_position.y) / (CELL_PIXEL_SIZE) - (1 if real_position.y < 0.0 else 0)) \
+	)
 
 const PIRATE_SPAWN_DISTANCE = 20 * Utility.METER_TO_PIXEL
 func _spawn_pirate() -> void:

@@ -16,5 +16,6 @@ sources/1 = SubResource("TileSetAtlasSource_q0fxs")
 script = ExtResource("1_7l6ni")
 
 [node name="layer0" type="TileMapLayer" parent="."]
+z_index = -1
 material = ExtResource("2_ee1p0")
 tile_set = SubResource("TileSet_472uo")

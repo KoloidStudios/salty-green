@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 		if player.vessel != null:
 			var vessel: Vessel = player.vessel
 			%label.text += \
-				"Vessel.position: ({0}, {1})\n".format([vessel.position.x / WorldTiles.TILE_SIZE, vessel.position.y / WorldTiles.TILE_SIZE]) + \
+				"Vessel.position: ({0}, {1})\n".format([vessel.position.x, vessel.position.y]) + \
 				"Vessel.speed: {0} px\\s".format([vessel.get_speed()])
 		else:
 			%label.text += \

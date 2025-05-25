@@ -54,6 +54,7 @@ func _calc_linear_damp() -> float:
 	# 1/2 * ro * v^2 * Cd * A / (m * v)
 	# Use 0.7 as Cd
 	# Use 1000kg/m^3 as density of water
+	# returns [s^-1]
 	return 0.5 * 1000 * _speed * 0.7 * WIDTH * LENGTH * _inverse_mass
 
 # Public Methods
@@ -133,9 +134,9 @@ func _physics_process(_delta: float) -> void:
 		apply_torque(Utility.METER_TO_PIXEL * angular_direction * inertia * ANGULAR_ACCELERATION)
 
 # Debug Functions
-func debug_drag_force() -> float:
+func drag_force() -> float:
 	# drag force (fake)
 	return 0.5 * 1000 * pow(_speed, 2) * 0.7 * WIDTH * LENGTH
 
-func debug_terminal_velocity() -> float:
+func terminal_velocity() -> float:
 	return sqrt(2 * abs(_engine.get_thrust(linear_direction)) / (1000 * 0.7 * WIDTH * LENGTH))

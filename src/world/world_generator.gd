@@ -14,5 +14,5 @@ func get_chunk(position: Vector2) -> World.Chunk:
 	for y: int in range(World.Chunk.SIZE):
 		for x: int in range(World.Chunk.SIZE):
 			var land = noise.get_noise_2d(chunk.position.x + x, chunk.position.y + y) * 10
-			chunk.set_value(Vector2(x, y), int(land > 1))
+			chunk.set_value(Vector2i(x, y), int(land > 1))
 	return chunk

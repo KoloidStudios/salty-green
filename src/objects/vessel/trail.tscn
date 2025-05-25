@@ -27,7 +27,7 @@ color_ramp = SubResource("GradientTexture1D_jkv2b")
 
 [node name="trail" type="GPUParticles2D"]
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_5lwen")
 texture = ExtResource("1_yft3j")
 fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 100, 100)
+process_material = SubResource("ParticleProcessMaterial_5lwen")
